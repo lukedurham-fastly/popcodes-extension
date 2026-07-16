@@ -54,12 +54,12 @@ function showResult(entry) {
 }
 
 async function getRecents() {
-  const data = await chrome.storage.local.get(RECENTS_KEY);
+  const data = await browser.storage.local.get(RECENTS_KEY);
   return data[RECENTS_KEY] || [];
 }
 
 function setRecents(recents) {
-  return chrome.storage.local.set({ [RECENTS_KEY]: recents });
+  return browser.storage.local.set({ [RECENTS_KEY]: recents });
 }
 
 async function addRecent(entry) {

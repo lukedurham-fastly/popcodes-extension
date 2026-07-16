@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lukedurham-fastly/popcodes-extension#readme",
   "devDependencies": {
-    "playwright": "^1.61.1"
+    "playwright": "^1.61.1",
+    "webextension-polyfill": "^0.12.0"
   }
 }
