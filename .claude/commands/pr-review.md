@@ -23,8 +23,7 @@ Review this PR against the conventions in CLAUDE.md. Check for violations in:
 7. **Unnecessary complexity** — deeply nested conditionals that could be flattened with early returns; functions or services that do more than one thing and should be split; over-engineered abstractions (extra layers, generics, or wrappers) that add indirection without benefit; multi-step data transforms that could be a single expression
 8. **Documentation consistency** — check whether changes to public API surface, configuration, project structure, or setup steps require updates to `README.md`, `QUICKSTART.md`, `START_HERE.md`, or any file under `docs/`; flag any doc that now contradicts the diff
 
-Post inline comments on specific diff lines. Mark each finding as **[BLOCKER]** (must fix before merge) or **[SUGGESTION]** (style/improvement). Do not comment on unchanged lines unless important. Do not invent issues. Prefix each comment with "Claude AI:"
-
+Post inline comments on specific diff lines. Mark each finding as **[AI: BLOCKER]** (must fix before merge) or **[AI: SUGGESTION]** (style/improvement). Do not comment on unchanged lines unless important. Do not invent issues. 
 ## Rules
 
 - Only comment on lines present in the diff. Do not comment on unrelated code.
