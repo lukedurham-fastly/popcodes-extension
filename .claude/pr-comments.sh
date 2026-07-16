@@ -9,7 +9,7 @@
 #       Resolve a review thread by its GraphQL node ID (e.g. PRRT_kwDO...).
 #
 #   .claude/pr-comments.sh react <COMMENT_DATABASE_ID> [PR_NUMBER]
-#       Add a +1 reaction to a review comment by its numeric database ID.
+#       Add a +1 reaction to a review comment by its numeric database ID
 
 set -euo pipefail
 
