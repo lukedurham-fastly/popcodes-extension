@@ -150,7 +150,13 @@ test("recents list is capped at 5 entries", async () => {
       await page.press("#code-input", "Enter");
     }
 
-    assert.equal(await page.locator("#recents-list li").count(), 5);
+    assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
+      "SEA — Seattle, United States",
+      "ATL — Atlanta, United States",
+      "ORD — Chicago, United States",
+      "LAX — Los Angeles, United States",
+      "JFK — New York, United States",
+    ]);
   });
 });
 

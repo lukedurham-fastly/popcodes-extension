@@ -53,18 +53,13 @@ function showResult(entry) {
   result.textContent = `${entry.code} — ${entry.city}, ${entry.country}`;
 }
 
-function getRecents() {
-  return new Promise((resolve) => {
-    chrome.storage.local.get(RECENTS_KEY, (data) => {
-      resolve(data[RECENTS_KEY] || []);
-    });
-  });
+async function getRecents() {
+  const data = await chrome.storage.local.get(RECENTS_KEY);
+  return data[RECENTS_KEY] || [];
 }
 
 function setRecents(recents) {
-  return new Promise((resolve) => {
-    chrome.storage.local.set({ [RECENTS_KEY]: recents }, resolve);
-  });
+  return chrome.storage.local.set({ [RECENTS_KEY]: recents });
 }
 
 async function addRecent(entry) {
@@ -97,7 +92,7 @@ function renderList(recents) {
 
 input.addEventListener("input", () => lookup(input.value));
 
-input.addEventListener("keydown", (event) => {
+input.addEventListener("keydown", async (event) => {
   if (event.key !== "Enter") {
     return;
   }
@@ -105,7 +100,7 @@ input.addEventListener("keydown", (event) => {
   const entry = lookup(input.value);
 
   if (entry) {
-    addRecent(entry);
+    await addRecent(entry);
   }
 
   input.value = "";
