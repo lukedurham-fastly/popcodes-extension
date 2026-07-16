@@ -107,4 +107,6 @@ input.addEventListener("keydown", (event) => {
   if (entry) {
     addRecent(entry);
   }
+
+  input.value = "";
 });

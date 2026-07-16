@@ -89,6 +89,22 @@ test("typing a code does not add it to recents until Enter is pressed", async ()
   });
 });
 
+test("pressing Enter clears the input so the next code can be typed fresh", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "sfo");
+    await page.press("#code-input", "Enter");
+    assert.equal(await page.inputValue("#code-input"), "");
+    assert.equal(
+      await page.textContent("#result"),
+      "SFO — San Francisco, United States"
+    );
+
+    await page.fill("#code-input", "zzz");
+    await page.press("#code-input", "Enter");
+    assert.equal(await page.inputValue("#code-input"), "");
+  });
+});
+
 test("pressing Enter on a valid code adds it to recents, most-recent-first", async () => {
   await withExtensionPage(async (page) => {
     await page.fill("#code-input", "sfo");
