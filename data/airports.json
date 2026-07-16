@@ -1036,7 +1036,7 @@
     "country": "Romania"
   },
   "ARY": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "ASA": {
@@ -1856,7 +1856,7 @@
     "country": "United States"
   },
   "BGN": {
-    "city": "",
+    "city": "Unknown",
     "country": "Russia"
   },
   "BGO": {
@@ -2208,7 +2208,7 @@
     "country": "Denmark"
   },
   "BLN": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "BLQ": {
@@ -2452,7 +2452,7 @@
     "country": "Brazil"
   },
   "BPH": {
-    "city": "",
+    "city": "Unknown",
     "country": "Philippines"
   },
   "BPI": {
@@ -2880,7 +2880,7 @@
     "country": "Russia"
   },
   "BWQ": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "BWT": {
@@ -3012,7 +3012,7 @@
     "country": "Brazil"
   },
   "BZD": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "BZE": {
@@ -3808,7 +3808,7 @@
     "country": "Sri Lanka"
   },
   "CMD": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "CME": {
@@ -4300,7 +4300,7 @@
     "country": "Peru"
   },
   "CVC": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "CVE": {
@@ -4380,7 +4380,7 @@
     "country": "Australia"
   },
   "CWW": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "CXA": {
@@ -4432,7 +4432,7 @@
     "country": "United States"
   },
   "CYG": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "CYI": {
@@ -5072,7 +5072,7 @@
     "country": "Costa Rica"
   },
   "DRN": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "DRO": {
@@ -5232,7 +5232,7 @@
     "country": "United Arab Emirates"
   },
   "DWD": {
-    "city": "",
+    "city": "Unknown",
     "country": "Saudi Arabia"
   },
   "DWH": {
@@ -5248,7 +5248,7 @@
     "country": "United States"
   },
   "DYA": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "DYG": {
@@ -5352,7 +5352,7 @@
     "country": "United States"
   },
   "ECH": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "ECI": {
@@ -7320,7 +7320,7 @@
     "country": "United States"
   },
   "GUH": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "GUI": {
@@ -8224,7 +8224,7 @@
     "country": "China"
   },
   "HTU": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "HTV": {
@@ -8348,7 +8348,7 @@
     "country": "China"
   },
   "HXX": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "HYA": {
@@ -9976,7 +9976,7 @@
     "country": "Papua New Guinea"
   },
   "KGY": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "KHC": {
@@ -10292,7 +10292,7 @@
     "country": "Russia"
   },
   "KMX": {
-    "city": "",
+    "city": "Unknown",
     "country": "Saudi Arabia"
   },
   "KNA": {
@@ -10420,7 +10420,7 @@
     "country": "South Korea"
   },
   "KPS": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "KPV": {
@@ -10440,7 +10440,7 @@
     "country": "Tajikistan"
   },
   "KRA": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "KRB": {
@@ -13160,7 +13160,7 @@
     "country": "United States"
   },
   "MRG": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "MRI": {
@@ -13520,7 +13520,7 @@
     "country": "Papua New Guinea"
   },
   "MXI": {
-    "city": "",
+    "city": "Unknown",
     "country": "Philippines"
   },
   "MXJ": {
@@ -13928,7 +13928,7 @@
     "country": "Tonga"
   },
   "NGA": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "NGB": {
@@ -16168,7 +16168,7 @@
     "country": "American Samoa"
   },
   "PPI": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "PPK": {
@@ -16792,7 +16792,7 @@
     "country": "Chile"
   },
   "QRM": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "QRO": {
@@ -16800,7 +16800,7 @@
     "country": "Mexico"
   },
   "QRR": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "QRW": {
@@ -17464,7 +17464,7 @@
     "country": "Australia"
   },
   "RPM": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "RPN": {
@@ -17536,7 +17536,7 @@
     "country": "Honduras"
   },
   "RTC": {
-    "city": "",
+    "city": "Unknown",
     "country": "India"
   },
   "RTG": {
@@ -18260,7 +18260,7 @@
     "country": "Singapore"
   },
   "SIO": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "SIP": {
@@ -18564,7 +18564,7 @@
     "country": "United States"
   },
   "SNB": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "SNC": {
@@ -19128,7 +19128,7 @@
     "country": "China"
   },
   "SWC": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "SWD": {
@@ -20524,7 +20524,7 @@
     "country": "United States"
   },
   "TUM": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "TUN": {
@@ -20624,7 +20624,7 @@
     "country": "China"
   },
   "TYB": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "TYF": {
@@ -21132,7 +21132,7 @@
     "country": "United States"
   },
   "UUN": {
-    "city": "",
+    "city": "Unknown",
     "country": "Mongolia"
   },
   "UUS": {
@@ -21472,7 +21472,7 @@
     "country": "Vanuatu"
   },
   "VLK": {
-    "city": "",
+    "city": "Unknown",
     "country": "Russia"
   },
   "VLL": {
@@ -21844,7 +21844,7 @@
     "country": "Indonesia"
   },
   "WGT": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "WHF": {
@@ -21908,7 +21908,7 @@
     "country": "New Zealand"
   },
   "WKB": {
-    "city": "",
+    "city": "Unknown",
     "country": "Australia"
   },
   "WKF": {
@@ -22272,7 +22272,7 @@
     "country": "France"
   },
   "XEN": {
-    "city": "",
+    "city": "Unknown",
     "country": "China"
   },
   "XFN": {

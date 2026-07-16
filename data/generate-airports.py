@@ -20,6 +20,7 @@ from pathlib import Path
 SOURCE_URL = "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
 OUTPUT_PATH = Path(__file__).parent / "airports.json"
 IATA_RE = re.compile(r"^[A-Z]{3}$")
+UNKNOWN_CITY = "Unknown"
 
 # OpenFlights airports.dat column order (no header row).
 COL_CITY = 2
@@ -28,7 +29,7 @@ COL_IATA = 4
 
 
 def fetch_rows():
-    with urllib.request.urlopen(SOURCE_URL) as response:
+    with urllib.request.urlopen(SOURCE_URL, timeout=30) as response:
         text = response.read().decode("utf-8")
     return csv.reader(text.splitlines())
 
@@ -42,7 +43,7 @@ def build_airports(rows):
         if not IATA_RE.match(iata):
             continue
         airports[iata] = {
-            "city": row[COL_CITY].strip(),
+            "city": row[COL_CITY].strip() or UNKNOWN_CITY,
             "country": row[COL_COUNTRY].strip(),
         }
     return airports
