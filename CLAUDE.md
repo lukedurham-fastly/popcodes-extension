@@ -17,6 +17,13 @@ Browser extension for looking up IATA airport codes locally (no network calls). 
 - No network requests anywhere in this extension — lookups must stay fully local.
 - Airport dataset keeps only IATA code, city, country — no unused fields from the source data.
 
+## Testing
+
+- End-to-end tests live in `/test` and use Playwright to drive the real unpacked extension in Chromium (not a mock DOM) — see README for setup.
+- Run `npm run test:e2e` after any change to `src/popup.js` or `src/popup.html`, and before handing off a ticket that touches popup behavior.
+- The extension has no background service worker, so tests launch Chromium headed (not headless) and compute the extension ID from the load path (`crypto.createHash("sha256")` of the absolute path, same as Chromium's unpacked-extension ID derivation) rather than waiting on a service worker event.
+- This is dev-only tooling (Node + Playwright as devDependencies) — it doesn't change the "no build tooling initially" rule for the shipped extension itself, which stays framework-free and build-free.
+
 ## Work tracking
 
 Work is tracked as GitHub issues in this repo, one per ticket. Each issue lists its goal, agent instructions, and dependencies (other issue numbers). Check an issue's dependencies are closed before starting it. See the README for the full ticket list and current issue numbers.
@@ -32,5 +39,6 @@ When asked to implement a ticket (GitHub issue):
 3. Check out the new branch.
 4. Push the branch to `origin` and comment on the issue linking to it (e.g. "Working on this in branch `12-uppercase-normalize`").
 5. Implement the changes described in the issue.
-6. Do not commit. Instead, provide a short commit message in the response that can be manually copied into the commit.
+6. If the change touches popup behavior, run `npm run test:e2e` (see Testing above) and fix any failures before handing off.
+7. Do not commit. Instead, provide a short commit message in the response that can be manually copied into the commit.
 
