@@ -6,6 +6,10 @@ Target browsers: Chrome, Edge, Firefox (Manifest V3, no Safari).
 
 Architecture: vanilla HTML/CSS/JS, no framework, bundled JSON dataset, no network calls.
 
+## Branding
+
+Icons and branding use Fastly red `#FF282D` as the primary brand color. The icon source is `icons/icon.svg`; the PNG sizes (16/32/48/128) referenced in the manifest are rendered from it.
+
 ## Testing
 
 End-to-end tests drive the real unpacked extension in Chromium via Playwright.
