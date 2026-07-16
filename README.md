@@ -6,3 +6,23 @@ Target browsers: Chrome, Edge, Firefox (Manifest V3, no Safari).
 
 Architecture: vanilla HTML/CSS/JS, no framework, bundled JSON dataset, no network calls.
 
+## Testing
+
+End-to-end tests drive the real unpacked extension in Chromium via Playwright.
+
+Install dependencies once:
+
+```
+brew install node        # if you don't already have Node.js
+npm install
+npx playwright install chromium
+```
+
+Run the tests:
+
+```
+npm run test:e2e
+```
+
+The suite runs Chromium in headed mode (a browser window will briefly appear) — this extension has no background service worker, so headless mode isn't used here.
+
