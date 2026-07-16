@@ -22,3 +22,15 @@ Browser extension for looking up IATA airport codes locally (no network calls). 
 Work is tracked as GitHub issues in this repo, one per ticket. Each issue lists its goal, agent instructions, and dependencies (other issue numbers). Check an issue's dependencies are closed before starting it. See the README for the full ticket list and current issue numbers.
 
 Not in scope yet: store listing/publishing (Chrome Web Store, AMO, Edge Add-ons) — side-loading only for now.
+
+## Implementing a ticket
+
+When asked to implement a ticket (GitHub issue):
+
+1. Check the issue's dependencies are closed before starting.
+2. Fetch the latest `main` and branch from it, named `<issue-number>-<short-slug>` (e.g. `12-uppercase-normalize`).
+3. Check out the new branch.
+4. Push the branch to `origin` and comment on the issue linking to it (e.g. "Working on this in branch `12-uppercase-normalize`").
+5. Implement the changes described in the issue.
+6. Do not commit. Instead, provide a short commit message in the response that can be manually copied into the commit.
+
