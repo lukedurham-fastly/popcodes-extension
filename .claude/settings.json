@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/luke.durham/work/popcodes remote -v)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(gh issue **)",
+      "Bash(gh issue *)"
+    ]
+  }
+}
