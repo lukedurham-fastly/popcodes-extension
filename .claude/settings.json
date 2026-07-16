@@ -5,7 +5,10 @@
       "Bash(gh auth *)",
       "Bash(gh repo *)",
       "Bash(gh issue **)",
-      "Bash(gh issue *)"
+      "Bash(gh issue *)",
+      "Bash(git -C /Users/luke.durham/work/popcodes branch -a)",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)"
     ]
   }
 }
