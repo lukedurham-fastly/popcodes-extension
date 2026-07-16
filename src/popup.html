@@ -7,6 +7,25 @@
   </head>
   <body>
     <h1>popcodes</h1>
+
+    <input
+      id="code-input"
+      class="code-input"
+      type="text"
+      placeholder="e.g. SFO"
+      maxlength="3"
+      autofocus
+      autocomplete="off"
+      spellcheck="false"
+    />
+
+    <div id="result" class="result"></div>
+
+    <div class="recents">
+      <h2 class="recents__title">Recent lookups</h2>
+      <ul id="recents-list" class="recents__list"></ul>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>
