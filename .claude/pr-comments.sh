@@ -8,7 +8,7 @@
 #   .claude/pr-comments.sh resolve <THREAD_NODE_ID>
 #       Resolve a review thread by its GraphQL node ID (e.g. PRRT_kwDO...).
 #
-#   .claude/pr-comments.sh react <COMMENT_DATABASE_ID> [PR_NUMBER]
+#   .claude/pr-comments.sh react <COMMENT_DATABASE_ID>
 #       Add a +1 reaction to a review comment by its numeric database ID
 
 set -euo pipefail
@@ -64,13 +64,12 @@ case "$FIRST_ARG" in
   react)
     COMMENT_ID="${2:-}"
     if [[ -z "$COMMENT_ID" ]]; then
-      echo "Usage: $0 react <COMMENT_DATABASE_ID> [PR_NUMBER]" >&2
+      echo "Usage: $0 react <COMMENT_DATABASE_ID>" >&2
       exit 1
     fi
-    PR_NUMBER=$(resolve_pr_number "${3:-}")
-    gh api "repos/${OWNER}/${REPO}/pulls/${PR_NUMBER}/comments/${COMMENT_ID}/reactions" \
+    gh api "repos/${OWNER}/${REPO}/pulls/comments/${COMMENT_ID}/reactions" \
       -X POST -f content='+1' > /dev/null
-    echo "Added +1 reaction to comment ${COMMENT_ID} on PR #${PR_NUMBER}."
+    echo "Added +1 reaction to comment ${COMMENT_ID}."
     ;;
 
   *)
