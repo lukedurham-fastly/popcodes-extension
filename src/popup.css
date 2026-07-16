@@ -43,3 +43,12 @@ h1 {
   padding: 0;
   font-size: 13px;
 }
+
+.recents__item {
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.recents__item:hover {
+  text-decoration: underline;
+}
