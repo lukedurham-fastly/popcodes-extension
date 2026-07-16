@@ -38,6 +38,7 @@ async function withExtensionPage(fn) {
     const extensionId = extensionIdFromPath(extensionPath);
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extensionId}/src/popup.html`);
+    await page.waitForFunction(() => window.__popcodesReady === true);
     await fn(page);
   } finally {
     await context.close();

@@ -8,6 +8,12 @@ fetch("../data/airports.json")
   .then((data) => {
     airports = data;
     lookup(input.value);
+  })
+  .catch(() => {
+    result.textContent = "Failed to load airport data";
+  })
+  .finally(() => {
+    window.__popcodesReady = true;
   });
 
 function lookup(rawValue) {
