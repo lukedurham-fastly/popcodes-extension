@@ -3,6 +3,18 @@ body {
   font-family: system-ui, sans-serif;
   margin: 0;
   padding: 8px;
+  background: #2e2e2e;
+  color: #fff;
+}
+
+/* Semi-transparent logo watermark behind the popup content */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../icons/icon.svg") center / 140px no-repeat;
+  opacity: 0.12;
 }
 
 h1 {
@@ -17,6 +29,15 @@ h1 {
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  background: #1f1f1f;
+  color: #fff;
+  border: 2px solid #ff282d;
+  border-radius: 4px;
+  outline: none;
+}
+
+.code-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .result {
@@ -33,7 +54,7 @@ h1 {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #666;
+  color: #aaa;
   margin: 0 0 4px;
 }
 
