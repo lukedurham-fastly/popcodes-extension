@@ -1,4 +1,4 @@
-import { test } from "node:test";
+import { after, before, test } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
 import os from "node:os";
@@ -23,6 +23,42 @@ function extensionIdFromPath(dirPath) {
     .map((c) => String.fromCharCode(97 + parseInt(c, 16)))
     .join("");
 }
+
+// data/pops.json is generated at package time (scripts/fetch-pops.mjs) and
+// gitignored, so swap in a small fixture for the test run to keep the POP
+// badge tests deterministic; any real generated file is restored afterwards.
+const popsPath = path.join(extensionPath, "data", "pops.json");
+const originalPops = fs.existsSync(popsPath)
+  ? fs.readFileSync(popsPath)
+  : null;
+
+before(() => {
+  fs.writeFileSync(
+    popsPath,
+    JSON.stringify({
+      AMS: {
+        name: "Amsterdam",
+        latitude: 52.308613,
+        longitude: 4.763889,
+        metro: false,
+      },
+      IAD: {
+        name: "Ashburn",
+        latitude: 38.944533,
+        longitude: -77.455811,
+        metro: true,
+      },
+    })
+  );
+});
+
+after(() => {
+  if (originalPops) {
+    fs.writeFileSync(popsPath, originalPops);
+  } else {
+    fs.rmSync(popsPath);
+  }
+});
 
 async function withExtensionPage(fn) {
   const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "popcodes-pw-"));
@@ -174,6 +210,78 @@ test("clicking a recent item re-shows its result", async () => {
       "SFO — San Francisco, United States"
     );
     assert.equal(await page.inputValue("#code-input"), "SFO");
+  });
+});
+
+test("a POP airport code shows Fastly badge and map link", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "ams");
+    await page.dispatchEvent("#code-input", "input");
+
+    assert.match(
+      await page.textContent("#result"),
+      /^AMS — Amsterdam, Netherlands/
+    );
+    assert.equal(
+      await page.getAttribute(".pop-badge--fastly", "aria-label"),
+      "Official Fastly POP"
+    );
+    assert.equal(
+      await page.locator(".pop-badge--metro").count(),
+      0,
+      "AMS is not a Metro POP"
+    );
+
+    const mapLink = page.locator(".pop-map-link");
+    assert.equal(
+      await mapLink.getAttribute("href"),
+      "https://www.google.com/maps?q=52.308613,4.763889"
+    );
+    assert.equal(await mapLink.getAttribute("target"), "_blank");
+    assert.equal(
+      await mapLink.getAttribute("aria-label"),
+      "Open Amsterdam POP location in Google Maps"
+    );
+  });
+});
+
+test("a Metro POP code also shows the Metro badge", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "iad");
+    await page.dispatchEvent("#code-input", "input");
+
+    assert.equal(await page.locator(".pop-badge--fastly").count(), 1);
+    assert.equal(await page.textContent(".pop-badge--metro"), "Metro");
+    assert.equal(
+      await page.getAttribute(".pop-badge--metro", "aria-label"),
+      "Metro POP"
+    );
+  });
+});
+
+test("a non-POP airport code shows no badges", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "anc");
+    await page.dispatchEvent("#code-input", "input");
+
+    assert.equal(
+      await page.textContent("#result"),
+      "ANC — Anchorage, United States"
+    );
+    assert.equal(await page.locator(".pop-badges").count(), 0);
+  });
+});
+
+test("clicking a recent POP lookup re-shows its badges", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "ams");
+    await page.press("#code-input", "Enter");
+    await page.fill("#code-input", "anc");
+    await page.press("#code-input", "Enter");
+
+    await page.click("#recents-list li >> text=AMS");
+
+    assert.equal(await page.locator(".pop-badge--fastly").count(), 1);
   });
 });
 

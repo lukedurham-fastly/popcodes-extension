@@ -8,13 +8,36 @@
 // Chrome and Edge share one manifest (no browser_specific_settings);
 // Firefox keeps the gecko keys from the root manifest.json.
 
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { execFileSync } from "node:child_process";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
+
+// The Fastly POP list is fetched at package time, never at extension runtime
+// and never committed — regenerate it before zipping anything.
+try {
+  execFileSync("node", [join(root, "scripts", "fetch-pops.mjs")], {
+    stdio: "inherit",
+  });
+} catch {
+  process.exit(1);
+}
+if (!existsSync(join(root, "data", "pops.json"))) {
+  console.error(
+    "error: data/pops.json is missing — run `node scripts/fetch-pops.mjs` (requires FASTLY_API_TOKEN)"
+  );
+  process.exit(1);
+}
 
 const manifest = JSON.parse(readFileSync(join(root, "manifest.json"), "utf8"));
 
