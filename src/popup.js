@@ -76,7 +76,7 @@ function renderPopBadges(pop) {
   fastlyBadge.setAttribute("aria-label", "Official Fastly POP");
   const icon = document.createElement("img");
   icon.className = "pop-badge__icon";
-  icon.src = "../icons/icon.svg";
+  icon.src = "../icons/icon-small.svg";
   icon.alt = "";
   fastlyBadge.append(icon, "Fastly POP");
   badges.appendChild(fastlyBadge);
