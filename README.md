@@ -20,6 +20,27 @@ npm run build
 
 This produces `dist/chrome`, `dist/edge`, and `dist/firefox` (plus a zip of each, e.g. `dist/popcodes-firefox-0.1.0.zip`). Chrome and Edge share a manifest; the Firefox variant keeps the `browser_specific_settings.gecko` keys. The dev-only dataset generator (`data/generate-airports.py`) is excluded from packages.
 
+### Installing the packages
+
+The extension isn't published to any store yet, so it's side-loaded:
+
+**Chrome**
+
+1. Open `chrome://extensions` and turn on **Developer mode** (top right).
+2. Click **Load unpacked** and select the `dist/chrome` folder (or drag `popcodes-chrome-<version>.zip` onto the page).
+
+**Edge**
+
+1. Open `edge://extensions` and turn on **Developer mode** (left sidebar).
+2. Click **Load unpacked** and select the `dist/edge` folder.
+
+**Firefox**
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on…** and select `popcodes-firefox-<version>.zip` (or the `manifest.json` inside `dist/firefox`).
+
+Temporary add-ons in Firefox are removed when the browser closes and need to be re-loaded each session; a permanent install requires the zip to be signed by Mozilla (not in scope yet).
+
 ## Testing
 
 End-to-end tests drive the real unpacked extension in Chromium via Playwright.
