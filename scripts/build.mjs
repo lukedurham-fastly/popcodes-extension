@@ -10,7 +10,7 @@
 
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -36,8 +36,9 @@ for (const [browser, targetManifest] of Object.entries(targets)) {
   for (const folder of ["src", "data", "icons"]) {
     cpSync(join(root, folder), join(outDir, folder), {
       recursive: true,
-      // ship only runtime files, not dev tooling like data/generate-airports.py
-      filter: (src) => !src.endsWith(".py"),
+      // ship only runtime files: no dev tooling like data/generate-airports.py,
+      // no dotfile junk like .DS_Store
+      filter: (src) => !src.endsWith(".py") && !basename(src).startsWith("."),
     });
   }
   writeFileSync(
@@ -46,9 +47,20 @@ for (const [browser, targetManifest] of Object.entries(targets)) {
   );
 
   const zipName = `popcodes-${browser}-${manifest.version}.zip`;
-  // -X omits platform extra fields so the archive is reproducible.
-  execFileSync("zip", ["-q", "-X", "-r", join("..", zipName), "."], {
-    cwd: outDir,
-  });
+  // -X omits platform extra fields (mtimes are still stored, so archives
+  // aren't byte-identical across runs).
+  try {
+    execFileSync("zip", ["-q", "-X", "-r", join("..", zipName), "."], {
+      cwd: outDir,
+    });
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      console.error(
+        "error: `zip` command not found — install it or run the build on macOS/Linux"
+      );
+      process.exit(1);
+    }
+    throw err;
+  }
   console.log(`built dist/${zipName}`);
 }
