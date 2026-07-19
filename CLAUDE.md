@@ -31,6 +31,9 @@ Work is tracked as GitHub issues in this repo, one per ticket. Each issue lists 
 
 Not in scope yet: store listing/publishing (Chrome Web Store, AMO, Edge Add-ons) — side-loading only for now.
 
+## Ticketing
+When creating or editing a ticket, do NOT add custom TICKET IDs, like TICKET-11 - DO NOT DO THIS - just use the github issue number, such as Issue #12.
+
 ## Implementing a ticket
 
 When asked to implement a ticket (GitHub issue):
