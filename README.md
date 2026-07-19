@@ -10,6 +10,16 @@ Architecture: vanilla HTML/CSS/JS, no framework, bundled JSON dataset, no networ
 
 Icons and branding use Fastly red `#FF282D` as the primary brand color. The icon sources are `icons/icon.svg` (48/128px PNGs) and `icons/icon-small.svg` (16/32px PNGs — simplified red plane on transparent for toolbar legibility); the PNG sizes referenced in the manifest are rendered from them.
 
+## Packaging
+
+Build a distributable package for each target browser:
+
+```
+npm run build
+```
+
+This produces `dist/chrome`, `dist/edge`, and `dist/firefox` (plus a zip of each, e.g. `dist/popcodes-firefox-0.1.0.zip`). Chrome and Edge share a manifest; the Firefox variant keeps the `browser_specific_settings.gecko` keys. The dev-only dataset generator (`data/generate-airports.py`) is excluded from packages.
+
 ## Testing
 
 End-to-end tests drive the real unpacked extension in Chromium via Playwright.
