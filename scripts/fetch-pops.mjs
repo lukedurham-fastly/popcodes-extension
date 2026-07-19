@@ -10,7 +10,7 @@
 // Metro POPs carry a "(Metro)" suffix on the API's name field; the suffix is
 // stripped and recorded as the boolean `metro` flag instead.
 
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -48,11 +48,22 @@ for (const dc of datacenters) {
   };
 }
 
-const outPath = join(
-  dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "data",
-  "pops.json"
-);
+const dataDir = join(dirname(fileURLToPath(import.meta.url)), "..", "data");
+
+// Some POPs use interim IATA codes for airports not yet in the master dataset
+// (e.g. WSI, Western Sydney International). Warn so they can be added, but
+// don't fail the build — the popup simply won't match them until then.
+// billing_region is the API's closest field to a country (it's a continent
+// for regions Fastly doesn't bill per-country).
+const airports = JSON.parse(readFileSync(join(dataDir, "airports.json"), "utf8"));
+for (const dc of datacenters) {
+  if (!(dc.code in airports)) {
+    console.warn(
+      `warning: POP ${dc.code} (${pops[dc.code].name}, ${dc.billing_region}) is not in data/airports.json — possibly an interim airport code`
+    );
+  }
+}
+
+const outPath = join(dataDir, "pops.json");
 writeFileSync(outPath, JSON.stringify(pops, null, 2) + "\n");
 console.log(`wrote ${Object.keys(pops).length} POPs to data/pops.json`);
