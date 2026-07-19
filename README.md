@@ -8,7 +8,7 @@ Architecture: vanilla HTML/CSS/JS, no framework, bundled JSON dataset, no networ
 
 ## Branding
 
-Icons and branding use Fastly red `#FF282D` as the primary brand color. The icon source is `icons/icon.svg`; the PNG sizes (16/32/48/128) referenced in the manifest are rendered from it.
+Icons and branding use Fastly red `#FF282D` as the primary brand color. The icon sources are `icons/icon.svg` (48/128px PNGs) and `icons/icon-small.svg` (16/32px PNGs — simplified red plane on transparent for toolbar legibility); the PNG sizes referenced in the manifest are rendered from them.
 
 ## Testing
 
