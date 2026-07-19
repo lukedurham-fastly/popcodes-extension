@@ -16,7 +16,7 @@ Browser extension for looking up IATA airport codes locally (no network calls). 
 - Keep the popup small (~300px wide).
 - No network requests anywhere in this extension — lookups must stay fully local.
 - Airport dataset keeps only IATA code, city, country — no unused fields from the source data.
-- Brand color is Fastly red `#FF282D` — use it for icons and any branded UI accents. Icon source of truth is `icons/icon.svg`; re-render the PNGs from it rather than editing them directly.
+- Brand color is Fastly red `#FF282D` — use it for icons and any branded UI accents. Icon sources of truth are `icons/icon.svg` (48/128px PNGs) and `icons/icon-small.svg` (16/32px PNGs — simplified red plane on transparent for toolbar legibility); re-render the PNGs from them rather than editing them directly.
 
 ## Testing
 
