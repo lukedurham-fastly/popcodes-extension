@@ -213,6 +213,62 @@ test("clicking a recent item re-shows its result", async () => {
   });
 });
 
+test("deleting a recent entry removes it and leaves the others", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "sfo");
+    await page.press("#code-input", "Enter");
+    await page.fill("#code-input", "jfk");
+    await page.press("#code-input", "Enter");
+
+    const sfoRow = page.locator("#recents-list li", { hasText: "SFO" });
+    await sfoRow.locator(".recents__delete").click();
+
+    assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
+      "JFK — New York, United States",
+    ]);
+  });
+});
+
+test("a deleted recent entry stays deleted after the popup reloads", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "sfo");
+    await page.press("#code-input", "Enter");
+    await page.fill("#code-input", "jfk");
+    await page.press("#code-input", "Enter");
+
+    const sfoRow = page.locator("#recents-list li", { hasText: "SFO" });
+    await sfoRow.locator(".recents__delete").click();
+
+    await page.reload();
+    await page.waitForFunction(() => window.__popcodesReady === true);
+
+    assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
+      "JFK — New York, United States",
+    ]);
+  });
+});
+
+test("clicking the delete button does not re-show the row's lookup", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "sfo");
+    await page.press("#code-input", "Enter");
+    await page.fill("#code-input", "jfk");
+    await page.press("#code-input", "Enter");
+
+    await page.fill("#code-input", "zzz");
+    await page.dispatchEvent("#code-input", "input");
+
+    const sfoRow = page.locator("#recents-list li", { hasText: "SFO" });
+    await sfoRow.locator(".recents__delete").click();
+
+    assert.equal(
+      await page.textContent("#result"),
+      'No airport found for "ZZZ"',
+      "clicking delete should not trigger the row's show-lookup handler"
+    );
+  });
+});
+
 test("a POP airport code shows Fastly badge and map link", async () => {
   await withExtensionPage(async (page) => {
     await page.fill("#code-input", "ams");

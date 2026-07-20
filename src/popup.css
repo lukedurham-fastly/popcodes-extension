@@ -70,12 +70,47 @@ h1 {
 }
 
 .recents__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
   padding: 2px 0;
 }
 
-.recents__item:hover {
+.recents__item:hover .recents__label {
   text-decoration: underline;
+}
+
+.recents__label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recents__delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+}
+
+.recents__delete:hover,
+.recents__delete:focus-visible {
+  color: #ff282d;
+}
+
+.recents__delete:focus-visible {
+  outline: 2px solid #ff282d;
+  outline-offset: 1px;
 }
 
 .pop-badges {
