@@ -285,6 +285,31 @@ test("clicking a recent POP lookup re-shows its badges", async () => {
   });
 });
 
+test("a POP code in recents shows the Fastly icon but no Metro badge or map link", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "ams");
+    await page.press("#code-input", "Enter");
+
+    const row = page.locator("#recents-list li", { hasText: "AMS" });
+    assert.equal(
+      await row.locator(".recents__pop-icon").getAttribute("aria-label"),
+      "Fastly POP"
+    );
+    assert.equal(await row.locator(".pop-badge--metro").count(), 0);
+    assert.equal(await row.locator(".pop-map-link").count(), 0);
+  });
+});
+
+test("a non-POP code in recents shows no Fastly icon", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "anc");
+    await page.press("#code-input", "Enter");
+
+    const row = page.locator("#recents-list li", { hasText: "ANC" });
+    assert.equal(await row.locator(".recents__pop-icon").count(), 0);
+  });
+});
+
 test("recents persist across popup reloads", async () => {
   await withExtensionPage(async (page) => {
     await page.fill("#code-input", "sfo");
