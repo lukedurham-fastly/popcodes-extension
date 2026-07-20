@@ -113,6 +113,12 @@ h1 {
   outline-offset: 1px;
 }
 
+.recents__pop-icon {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
 .pop-badges {
   display: flex;
   align-items: center;

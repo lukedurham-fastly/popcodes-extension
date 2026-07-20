@@ -66,6 +66,18 @@ function showResult(entry) {
   }
 }
 
+// Shared by renderPopBadges() (result area) and renderList() (recents list)
+// so both places render the exact same Fastly icon markup. The <img> alt is
+// always empty because the accessible label lives on whichever element wraps
+// the icon at the call site.
+function renderFastlyIcon() {
+  const icon = document.createElement("img");
+  icon.className = "pop-badge__icon";
+  icon.src = "../icons/icon-small.svg";
+  icon.alt = "";
+  return icon;
+}
+
 function renderPopBadges(pop) {
   const badges = document.createElement("div");
   badges.className = "pop-badges";
@@ -74,11 +86,7 @@ function renderPopBadges(pop) {
   fastlyBadge.className = "pop-badge pop-badge--fastly";
   fastlyBadge.title = "Official Fastly POP";
   fastlyBadge.setAttribute("aria-label", "Official Fastly POP");
-  const icon = document.createElement("img");
-  icon.className = "pop-badge__icon";
-  icon.src = "../icons/icon-small.svg";
-  icon.alt = "";
-  fastlyBadge.append(icon, "Fastly POP");
+  fastlyBadge.append(renderFastlyIcon(), "Fastly POP");
   badges.appendChild(fastlyBadge);
 
   if (pop.metro) {
@@ -141,6 +149,12 @@ function renderList(recents) {
     label.textContent = `${entry.code} — ${entry.city}, ${entry.country}`;
     item.appendChild(label);
 
+    // pops.json is absent in a dev checkout, so pops may be {} — that's
+    // "no POPs", not an error, same as showResult() already treats it.
+    if (pops[entry.code]) {
+      item.appendChild(renderRecentPopIcon());
+    }
+
     item.appendChild(renderDeleteButton(entry));
 
     item.addEventListener("click", () => {
@@ -149,6 +163,15 @@ function renderList(recents) {
     });
     recentsList.appendChild(item);
   }
+}
+
+function renderRecentPopIcon() {
+  const wrapper = document.createElement("span");
+  wrapper.className = "recents__pop-icon";
+  wrapper.title = "Fastly POP";
+  wrapper.setAttribute("aria-label", "Fastly POP");
+  wrapper.appendChild(renderFastlyIcon());
+  return wrapper;
 }
 
 function renderDeleteButton(entry) {
