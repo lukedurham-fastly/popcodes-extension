@@ -37,12 +37,12 @@ def build_country_names(rows):
 def build_airports(rows, country_names):
     airports = {}
     for row in rows:
-        iata = row["iata_code"].strip()
+        iata = (row.get("iata_code") or "").strip()
         if not IATA_RE.match(iata):
             continue
-        country_code = row["iso_country"].strip()
+        country_code = (row.get("iso_country") or "").strip()
         airports[iata] = {
-            "city": row["municipality"].strip() or UNKNOWN_CITY,
+            "city": (row.get("municipality") or "").strip() or UNKNOWN_CITY,
             "country": country_names.get(country_code, country_code),
         }
     return airports

@@ -366,6 +366,48 @@ test("a non-POP code in recents shows no Fastly icon", async () => {
   });
 });
 
+test("a metro code shows the override badge", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "lon");
+    await page.dispatchEvent("#code-input", "input");
+
+    assert.match(
+      await page.textContent("#result"),
+      /^LON — London, United Kingdom/
+    );
+    assert.equal(
+      await page.textContent(".pop-badge--override"),
+      "Not an IATA airport"
+    );
+    assert.equal(
+      await page.getAttribute(".pop-badge--override", "aria-label"),
+      "City/country data is hand-maintained, not from the IATA airport dataset"
+    );
+  });
+});
+
+test("a Fastly-internal placeholder code shows the override badge", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "qaa");
+    await page.dispatchEvent("#code-input", "input");
+
+    assert.match(await page.textContent("#result"), /^QAA — Karnal, India/);
+    assert.equal(
+      await page.textContent(".pop-badge--override"),
+      "Not an IATA airport"
+    );
+  });
+});
+
+test("a regular airport code shows no override badge", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "sfo");
+    await page.dispatchEvent("#code-input", "input");
+
+    assert.equal(await page.locator(".pop-badge--override").count(), 0);
+  });
+});
+
 test("recents persist across popup reloads", async () => {
   await withExtensionPage(async (page) => {
     await page.fill("#code-input", "sfo");

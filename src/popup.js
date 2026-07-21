@@ -91,40 +91,41 @@ function renderFastlyIcon() {
   return icon;
 }
 
+// Shared by every badge in renderBadges() so each one only has to specify
+// what's different: its class suffix, visible content, and accessible label.
+function createBadge(className, content, label) {
+  const badge = document.createElement("span");
+  badge.className = `pop-badge ${className}`;
+  badge.title = label;
+  badge.setAttribute("aria-label", label);
+  badge.append(...[].concat(content));
+  return badge;
+}
+
 function renderBadges(entry, pop) {
   const badges = document.createElement("div");
   badges.className = "pop-badges";
 
   if (entry.override) {
-    const overrideBadge = document.createElement("span");
-    overrideBadge.className = "pop-badge pop-badge--override";
-    overrideBadge.textContent = "Not an IATA airport";
-    overrideBadge.title = "City/country data is hand-maintained, not from the IATA airport dataset";
-    overrideBadge.setAttribute(
-      "aria-label",
-      "City/country data is hand-maintained, not from the IATA airport dataset"
+    badges.appendChild(
+      createBadge(
+        "pop-badge--override",
+        "Not an IATA airport",
+        "City/country data is hand-maintained, not from the IATA airport dataset"
+      )
     );
-    badges.appendChild(overrideBadge);
   }
 
   if (!pop) {
     return badges;
   }
 
-  const fastlyBadge = document.createElement("span");
-  fastlyBadge.className = "pop-badge pop-badge--fastly";
-  fastlyBadge.title = "Official Fastly POP";
-  fastlyBadge.setAttribute("aria-label", "Official Fastly POP");
-  fastlyBadge.append(renderFastlyIcon(), "Fastly POP");
-  badges.appendChild(fastlyBadge);
+  badges.appendChild(
+    createBadge("pop-badge--fastly", [renderFastlyIcon(), "Fastly POP"], "Official Fastly POP")
+  );
 
   if (pop.metro) {
-    const metroBadge = document.createElement("span");
-    metroBadge.className = "pop-badge pop-badge--metro";
-    metroBadge.textContent = "Metro";
-    metroBadge.title = "Metro POP";
-    metroBadge.setAttribute("aria-label", "Metro POP");
-    badges.appendChild(metroBadge);
+    badges.appendChild(createBadge("pop-badge--metro", "Metro", "Metro POP"));
   }
 
   const mapLink = document.createElement("a");
