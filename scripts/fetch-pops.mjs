@@ -10,9 +10,13 @@
 // Metro POPs carry a "(Metro)" suffix on the API's name field; the suffix is
 // stripped and recorded as the boolean `metro` flag instead.
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+
+const rootDir = join(dirname(fileURLToPath(import.meta.url)), "..");
+const envPath = join(rootDir, ".env");
+if (existsSync(envPath)) process.loadEnvFile(envPath);
 
 const token = process.env.FASTLY_API_TOKEN;
 if (!token) {
@@ -35,7 +39,7 @@ if (!response.ok) {
 
 const datacenters = await response.json();
 
-const dataDir = join(dirname(fileURLToPath(import.meta.url)), "..", "data");
+const dataDir = join(rootDir, "data");
 const airports = JSON.parse(readFileSync(join(dataDir, "airports.json"), "utf8"));
 
 const METRO_SUFFIX = " (Metro)";

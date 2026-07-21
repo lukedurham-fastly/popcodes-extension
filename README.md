@@ -15,8 +15,10 @@ Icons and branding use Fastly red `#FF282D` as the primary brand color. The icon
 Build a distributable package for each target browser:
 
 ```
-FASTLY_API_TOKEN=<your token> npm run build
+npm run build
 ```
+
+This requires a `FASTLY_API_TOKEN`, set either as an environment variable or in a gitignored `.env` file in the repo root (`FASTLY_API_TOKEN=<your token>`) — `scripts/fetch-pops.mjs` autoloads `.env` if present.
 
 Packaging first regenerates `data/pops.json` — the Fastly POP list used for the popup's POP badges — by calling Fastly's datacenters API (`scripts/fetch-pops.mjs`). This happens at package time only: the file is gitignored, never committed, and the shipped extension itself still makes no network requests. The build fails with a clear error if the token is missing or the fetch fails.
 
