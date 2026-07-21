@@ -152,6 +152,12 @@ h1 {
   color: #fff;
 }
 
+.pop-badge--override {
+  background: transparent;
+  border: 1px solid #888;
+  color: #ccc;
+}
+
 .pop-map-link {
   display: inline-flex;
   align-items: center;

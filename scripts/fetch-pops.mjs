@@ -41,6 +41,9 @@ const datacenters = await response.json();
 
 const dataDir = join(rootDir, "data");
 const airports = JSON.parse(readFileSync(join(dataDir, "airports.json"), "utf8"));
+const metroCodes = JSON.parse(readFileSync(join(dataDir, "metro-codes.json"), "utf8"));
+const fastlyCodes = JSON.parse(readFileSync(join(dataDir, "fastly-codes.json"), "utf8"));
+const knownCodes = { ...airports, ...metroCodes, ...fastlyCodes };
 
 const METRO_SUFFIX = " (Metro)";
 const pops = {};
@@ -55,14 +58,17 @@ for (const dc of datacenters) {
     metro,
   };
 
-  // Some POPs use interim IATA codes for airports not yet in the master dataset
-  // (e.g. WSI, Western Sydney International). Warn so they can be added, but
-  // don't fail the build — the popup simply won't match them until then.
+  // Some POPs use codes that aren't in the master airport dataset: interim
+  // IATA codes for airports not yet added (e.g. WSI, Western Sydney
+  // International), IATA metro codes (data/metro-codes.json), or
+  // Fastly-internal placeholders for cities with no IATA code at all
+  // (data/fastly-codes.json). Warn on whatever's left after checking all
+  // three, but don't fail the build — the popup simply won't match them.
   // billing_region is the API's closest field to a country (it's a continent
   // for regions Fastly doesn't bill per-country).
-  if (!(dc.code in airports)) {
+  if (!(dc.code in knownCodes)) {
     console.warn(
-      `warning: POP ${dc.code} (${name}, ${dc.billing_region}) is not in data/airports.json — possibly an interim airport code`
+      `warning: POP ${dc.code} (${name}, ${dc.billing_region}) is not in data/airports.json, data/metro-codes.json, or data/fastly-codes.json — possibly an interim airport code`
     );
   }
 }

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Generates data/airports.json from the OpenFlights airports dataset.
+Generates data/airports.json from the OurAirports dataset.
 
 To refresh:
     python3 data/generate-airports.py
 
-Source: https://github.com/jpatokal/openflights (data/airports.dat, CC BY-SA 4.0)
+Source: https://ourairports.com/data/ (airports.csv + countries.csv, public domain)
 Only rows with a valid 3-letter IATA code are kept, and only the IATA
-code, city, and country fields are retained (all other OpenFlights
-columns, e.g. coordinates, altitude, timezone, are dropped).
+code, city, and country fields are retained (all other OurAirports
+columns, e.g. coordinates, elevation, airport type, are dropped).
 """
 
 import csv
@@ -17,40 +17,40 @@ import re
 import urllib.request
 from pathlib import Path
 
-SOURCE_URL = "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
+AIRPORTS_URL = "https://ourairports.com/data/airports.csv"
+COUNTRIES_URL = "https://ourairports.com/data/countries.csv"
 OUTPUT_PATH = Path(__file__).parent / "airports.json"
 IATA_RE = re.compile(r"^[A-Z]{3}$")
 UNKNOWN_CITY = "Unknown"
 
-# OpenFlights airports.dat column order (no header row).
-COL_CITY = 2
-COL_COUNTRY = 3
-COL_IATA = 4
 
-
-def fetch_rows():
-    with urllib.request.urlopen(SOURCE_URL, timeout=30) as response:
+def fetch_rows(url):
+    with urllib.request.urlopen(url, timeout=30) as response:
         text = response.read().decode("utf-8")
-    return csv.reader(text.splitlines())
+    return csv.DictReader(text.splitlines())
 
 
-def build_airports(rows):
+def build_country_names(rows):
+    return {row["code"]: row["name"] for row in rows}
+
+
+def build_airports(rows, country_names):
     airports = {}
     for row in rows:
-        if len(row) <= COL_IATA:
-            continue
-        iata = row[COL_IATA].strip()
+        iata = row["iata_code"].strip()
         if not IATA_RE.match(iata):
             continue
+        country_code = row["iso_country"].strip()
         airports[iata] = {
-            "city": row[COL_CITY].strip() or UNKNOWN_CITY,
-            "country": row[COL_COUNTRY].strip(),
+            "city": row["municipality"].strip() or UNKNOWN_CITY,
+            "country": country_names.get(country_code, country_code),
         }
     return airports
 
 
 def main():
-    airports = build_airports(fetch_rows())
+    country_names = build_country_names(fetch_rows(COUNTRIES_URL))
+    airports = build_airports(fetch_rows(AIRPORTS_URL), country_names)
     sorted_airports = {code: airports[code] for code in sorted(airports)}
     OUTPUT_PATH.write_text(
         json.dumps(sorted_airports, indent=2, ensure_ascii=False) + "\n",

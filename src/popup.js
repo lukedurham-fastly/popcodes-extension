@@ -7,17 +7,25 @@ const MAX_RECENTS = 5;
 
 let airports = null;
 let pops = {};
+let overrideCodes = new Set();
 
 Promise.all([
   fetch("../data/airports.json").then((response) => response.json()),
+  fetch("../data/metro-codes.json").then((response) => response.json()),
+  fetch("../data/fastly-codes.json").then((response) => response.json()),
   // pops.json is generated at package time (scripts/fetch-pops.mjs) and may be
   // absent in a dev checkout — treat that as "no POPs", not a load failure.
   fetch("../data/pops.json")
     .then((response) => response.json())
     .catch(() => ({})),
 ])
-  .then(([airportData, popData]) => {
-    airports = airportData;
+  .then(([airportData, metroCodes, fastlyCodes, popData]) => {
+    // metro-codes.json and fastly-codes.json are hand-maintained overrides for
+    // codes the canonical airport dataset will never contain (IATA metro-area
+    // codes and Fastly-internal placeholder codes) — merged on top so they
+    // resolve the same way a real airport code would.
+    airports = { ...airportData, ...metroCodes, ...fastlyCodes };
+    overrideCodes = new Set([...Object.keys(metroCodes), ...Object.keys(fastlyCodes)]);
     pops = popData;
     lookup(input.value);
   })
@@ -52,7 +60,12 @@ function lookup(rawValue) {
     return null;
   }
 
-  const entry = { code, city: airport.city, country: airport.country };
+  const entry = {
+    code,
+    city: airport.city,
+    country: airport.country,
+    override: overrideCodes.has(code),
+  };
   showResult(entry);
   return entry;
 }
@@ -61,8 +74,8 @@ function showResult(entry) {
   result.textContent = `${entry.code} — ${entry.city}, ${entry.country}`;
 
   const pop = pops[entry.code];
-  if (pop) {
-    result.appendChild(renderPopBadges(pop));
+  if (entry.override || pop) {
+    result.appendChild(renderBadges(entry, pop));
   }
 }
 
@@ -78,9 +91,25 @@ function renderFastlyIcon() {
   return icon;
 }
 
-function renderPopBadges(pop) {
+function renderBadges(entry, pop) {
   const badges = document.createElement("div");
   badges.className = "pop-badges";
+
+  if (entry.override) {
+    const overrideBadge = document.createElement("span");
+    overrideBadge.className = "pop-badge pop-badge--override";
+    overrideBadge.textContent = "Not an IATA airport";
+    overrideBadge.title = "City/country data is hand-maintained, not from the IATA airport dataset";
+    overrideBadge.setAttribute(
+      "aria-label",
+      "City/country data is hand-maintained, not from the IATA airport dataset"
+    );
+    badges.appendChild(overrideBadge);
+  }
+
+  if (!pop) {
+    return badges;
+  }
 
   const fastlyBadge = document.createElement("span");
   fastlyBadge.className = "pop-badge pop-badge--fastly";
