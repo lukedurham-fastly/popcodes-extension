@@ -155,6 +155,8 @@ function renderList(recents) {
       item.appendChild(renderRecentPopIcon());
     }
 
+    item.appendChild(renderDeleteButton(entry));
+
     item.addEventListener("click", () => {
       input.value = entry.code;
       showResult(entry);
@@ -170,6 +172,33 @@ function renderRecentPopIcon() {
   wrapper.setAttribute("aria-label", "Fastly POP");
   wrapper.appendChild(renderFastlyIcon());
   return wrapper;
+}
+
+function renderDeleteButton(entry) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "recents__delete";
+  const label = `Remove ${entry.code} from recent lookups`;
+  button.title = label;
+  button.setAttribute("aria-label", label);
+  // Feather Icons "trash-2" (MIT), inlined — no external asset/network fetch.
+  button.innerHTML =
+    '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<polyline points="3 6 5 6 21 6"></polyline>' +
+    '<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>' +
+    '<line x1="10" y1="11" x2="10" y2="17"></line>' +
+    '<line x1="14" y1="11" x2="14" y2="17"></line>' +
+    "</svg>";
+
+  button.addEventListener("click", async (event) => {
+    event.stopPropagation();
+    const recents = await getRecents();
+    const updated = recents.filter((r) => r.code !== entry.code);
+    await setRecents(updated);
+    renderList(updated);
+  });
+
+  return button;
 }
 
 input.addEventListener("input", () => lookup(input.value));
