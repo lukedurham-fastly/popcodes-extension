@@ -7,8 +7,9 @@ To refresh:
 
 Source: https://ourairports.com/data/ (airports.csv + countries.csv, public domain)
 Only rows with a valid 3-letter IATA code are kept, and only the IATA
-code, city, and country fields are retained (all other OurAirports
-columns, e.g. coordinates, elevation, airport type, are dropped).
+code, city, country, and (when valid) 4-letter ICAO code fields are
+retained (all other OurAirports columns, e.g. coordinates, elevation,
+airport type, are dropped).
 """
 
 import csv

@@ -478,6 +478,8 @@ test("pressing Enter on a single search match selects it", async () => {
     await page.fill("#code-input", "brisb");
     await page.press("#code-input", "Enter");
     assert.match(await page.textContent("#result"), /^BNE — Brisbane, Australia/);
+    assert.equal(await page.locator(".search-results__item").count(), 0);
+    assert.equal(await page.textContent(".pop-badge--internal"), "Internal: YBBN");
     assert.equal(await page.inputValue("#code-input"), "");
     assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
       "BNE — Brisbane, Australia",

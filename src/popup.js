@@ -352,7 +352,7 @@ input.addEventListener("keydown", async (event) => {
   const entry = lookup(input.value);
 
   if (entry) {
-    await addRecent(entry);
+    await selectEntry(entry);
   }
 
   // Several search matches stay on screen so the user can pick one.
