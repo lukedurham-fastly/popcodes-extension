@@ -295,14 +295,21 @@ test("a POP airport code shows Fastly badge and map link", async () => {
     );
 
     const mapLink = page.locator(".pop-map-link");
-    assert.equal(
-      await mapLink.getAttribute("href"),
-      "https://www.google.com/maps?q=52.308613,4.763889"
-    );
+    const href = await mapLink.getAttribute("href");
+    const prefix = "https://geojson.io/#data=data:application/json;base64,";
+    assert.ok(href.startsWith(prefix));
+    const json = atob(decodeURIComponent(href.slice(prefix.length)));
+    const { features } = JSON.parse(json);
+    const selected = features.filter((f) => f.properties["marker-color"] === "#FF282D");
+    assert.equal(selected.length, 1);
+    assert.equal(selected[0].properties.title, "AMS - Amsterdam");
+    const nearby = features.filter((f) => f.properties["marker-color"] !== "#FF282D");
+    assert.ok(nearby.length > 0 && nearby.length <= 50);
+    assert.ok(nearby.every((f) => !f.properties.title.startsWith("AMS")));
     assert.equal(await mapLink.getAttribute("target"), "_blank");
     assert.equal(
       await mapLink.getAttribute("aria-label"),
-      "Open Amsterdam POP location in Google Maps"
+      "Open Amsterdam POP location on a map, with nearby POPs"
     );
   });
 });
