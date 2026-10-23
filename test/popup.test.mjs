@@ -42,6 +42,12 @@ before(() => {
         longitude: 4.763889,
         metro: false,
       },
+      BNE: {
+        name: "Brisbane",
+        latitude: -27.384167,
+        longitude: 153.1175,
+        metro: false,
+      },
       IAD: {
         name: "Ashburn",
         latitude: 38.944533,
@@ -419,5 +425,98 @@ test("recents persist across popup reloads", async () => {
     assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
       "SFO — San Francisco, United States",
     ]);
+  });
+});
+
+test("typing more than 3 characters searches by city name", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "Brisb");
+    await page.dispatchEvent("#code-input", "input");
+    assert.deepEqual(await page.locator(".search-results__item").allTextContents(), [
+      "BNE — Brisbane, Australia",
+    ]);
+  });
+});
+
+test("a city search can show multiple results, Fastly POPs first", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "amst");
+    await page.dispatchEvent("#code-input", "input");
+    const items = await page.locator(".search-results__item").allTextContents();
+    assert.ok(items.length > 1, "Amsterdam should match more than one airport");
+    assert.equal(items[0], "AMS — Amsterdam, Netherlands", "POP airport sorts first");
+  });
+});
+
+test("a city search with no match shows a not-found message", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "qqqqq");
+    await page.dispatchEvent("#code-input", "input");
+    assert.equal(await page.textContent("#result"), 'No airport found for "QQQQQ"');
+  });
+});
+
+test("clicking a search result shows it, adds it to recents and clears the input", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "amst");
+    await page.dispatchEvent("#code-input", "input");
+    await page.locator(".search-results__item").first().click();
+
+    assert.match(await page.textContent("#result"), /^AMS — Amsterdam, Netherlands/);
+    assert.equal(await page.inputValue("#code-input"), "");
+    await page.waitForFunction(
+      () => document.querySelectorAll("#recents-list li").length === 1
+    );
+    assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
+      "AMS — Amsterdam, Netherlands",
+    ]);
+  });
+});
+
+test("pressing Enter on a single search match selects it", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "brisb");
+    await page.press("#code-input", "Enter");
+    assert.match(await page.textContent("#result"), /^BNE — Brisbane, Australia/);
+    assert.equal(await page.inputValue("#code-input"), "");
+    assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
+      "BNE — Brisbane, Australia",
+    ]);
+  });
+});
+
+test("pressing Enter with several search matches keeps the input and results", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "amst");
+    await page.press("#code-input", "Enter");
+    assert.equal(await page.inputValue("#code-input"), "AMST");
+    assert.ok((await page.locator(".search-results__item").count()) > 1);
+    assert.deepEqual(await page.locator("#recents-list li").allTextContents(), []);
+  });
+});
+
+test("a 4-letter ICAO code finds its airport", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "ybbn");
+    await page.dispatchEvent("#code-input", "input");
+    assert.deepEqual(await page.locator(".search-results__item").allTextContents(), [
+      "BNE — Brisbane, Australia",
+    ]);
+  });
+});
+
+test("a POP shows its internal (ICAO) code when it differs from the POP code", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "bne");
+    await page.dispatchEvent("#code-input", "input");
+    assert.equal(await page.textContent(".pop-badge--internal"), "Internal: YBBN");
+  });
+});
+
+test("a non-POP airport shows no internal code", async () => {
+  await withExtensionPage(async (page) => {
+    await page.fill("#code-input", "sfo");
+    await page.dispatchEvent("#code-input", "input");
+    assert.equal(await page.locator(".pop-badge--internal").count(), 0);
   });
 });

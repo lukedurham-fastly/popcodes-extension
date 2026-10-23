@@ -4,10 +4,14 @@ const recentsList = document.getElementById("recents-list");
 
 const RECENTS_KEY = "recentLookups";
 const MAX_RECENTS = 5;
+// Three characters is an IATA code lookup; anything longer is a word search.
+const CODE_LENGTH = 3;
+const MAX_SEARCH_RESULTS = 8;
 
 let airports = null;
 let pops = {};
 let overrideCodes = new Set();
+let searchIndex = [];
 
 Promise.all([
   fetch("../data/airports.json").then((response) => response.json()),
@@ -27,6 +31,7 @@ Promise.all([
     airports = { ...airportData, ...metroCodes, ...fastlyCodes };
     overrideCodes = new Set([...Object.keys(metroCodes), ...Object.keys(fastlyCodes)]);
     pops = popData;
+    searchIndex = buildSearchIndex();
     lookup(input.value);
   })
   .catch(() => {
@@ -44,7 +49,7 @@ function lookup(rawValue) {
     input.value = code;
   }
 
-  if (code.length < 3) {
+  if (code.length < CODE_LENGTH) {
     result.textContent = "";
     return null;
   }
@@ -53,21 +58,111 @@ function lookup(rawValue) {
     return null;
   }
 
-  const airport = airports[code];
+  if (code.length > CODE_LENGTH) {
+    return search(code);
+  }
 
-  if (!airport) {
+  const entry = buildEntry(code);
+
+  if (!entry) {
     result.textContent = `No airport found for "${code}"`;
     return null;
   }
 
-  const entry = {
+  showResult(entry);
+  return entry;
+}
+
+function buildEntry(code) {
+  const airport = airports[code];
+
+  if (!airport) {
+    return null;
+  }
+
+  return {
     code,
     city: airport.city,
     country: airport.country,
     override: overrideCodes.has(code),
   };
+}
+
+// Lowercase and strip diacritics so "sao paulo" finds "São Paulo".
+function normalize(text) {
+  return text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+}
+
+// Searches by city, plus the Fastly POP name (which can differ from the
+// airport's city, e.g. "Sydney" vs "Sydney (Mascot)") and the ICAO code.
+function buildSearchIndex() {
+  return Object.entries(airports).map(([code, airport]) => ({
+    code,
+    haystack: normalize(`${airport.city} ${pops[code]?.name ?? ""}`),
+    icao: airport.icao,
+    isPop: Boolean(pops[code]),
+  }));
+}
+
+function search(rawQuery) {
+  const query = normalize(rawQuery);
+
+  const matches = searchIndex
+    .filter((item) => item.haystack.includes(query) || item.icao === rawQuery)
+    .sort(
+      (a, b) =>
+        b.isPop - a.isPop ||
+        b.haystack.startsWith(query) - a.haystack.startsWith(query) ||
+        a.code.localeCompare(b.code)
+    );
+
+  if (matches.length === 0) {
+    result.textContent = `No airport found for "${rawQuery}"`;
+    return null;
+  }
+
+  const entries = matches.slice(0, MAX_SEARCH_RESULTS).map((item) => buildEntry(item.code));
+  renderSearchResults(entries, matches.length);
+
+  // A lone match is what Enter selects; with several, the user picks one.
+  return matches.length === 1 ? entries[0] : null;
+}
+
+function renderSearchResults(entries, total) {
+  const list = document.createElement("ul");
+  list.className = "search-results";
+
+  for (const entry of entries) {
+    const item = document.createElement("li");
+    item.className = "search-results__item";
+
+    const label = document.createElement("span");
+    label.className = "recents__label";
+    label.textContent = `${entry.code} — ${entry.city}, ${entry.country}`;
+    item.appendChild(label);
+
+    if (pops[entry.code]) {
+      item.appendChild(renderRecentPopIcon());
+    }
+
+    item.addEventListener("click", () => selectEntry(entry));
+    list.appendChild(item);
+  }
+
+  result.replaceChildren(list);
+
+  if (total > entries.length) {
+    const more = document.createElement("div");
+    more.className = "search-results__more";
+    more.textContent = `${total - entries.length} more — keep typing to narrow`;
+    result.appendChild(more);
+  }
+}
+
+async function selectEntry(entry) {
   showResult(entry);
-  return entry;
+  input.value = "";
+  await addRecent(entry);
 }
 
 function showResult(entry) {
@@ -118,6 +213,19 @@ function renderBadges(entry, pop) {
 
   if (!pop) {
     return badges;
+  }
+
+  // The POP's internal code is the airport's ICAO (flight controller) code,
+  // e.g. BNE -> YBBN — only worth showing when it differs from the POP code.
+  const internalCode = airports[entry.code]?.icao;
+  if (internalCode && internalCode !== entry.code) {
+    badges.appendChild(
+      createBadge(
+        "pop-badge--internal",
+        `Internal: ${internalCode}`,
+        `Internal (ICAO) code: ${internalCode}`
+      )
+    );
   }
 
   badges.appendChild(
@@ -244,5 +352,8 @@ input.addEventListener("keydown", async (event) => {
     await addRecent(entry);
   }
 
-  input.value = "";
+  // Several search matches stay on screen so the user can pick one.
+  if (entry || input.value.length <= CODE_LENGTH) {
+    input.value = "";
+  }
 });
