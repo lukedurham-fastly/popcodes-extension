@@ -7,8 +7,9 @@ To refresh:
 
 Source: https://ourairports.com/data/ (airports.csv + countries.csv, public domain)
 Only rows with a valid 3-letter IATA code are kept, and only the IATA
-code, city, and country fields are retained (all other OurAirports
-columns, e.g. coordinates, elevation, airport type, are dropped).
+code, city, country, and (when valid) 4-letter ICAO code fields are
+retained (all other OurAirports columns, e.g. coordinates, elevation,
+airport type, are dropped).
 """
 
 import csv
@@ -21,6 +22,7 @@ AIRPORTS_URL = "https://ourairports.com/data/airports.csv"
 COUNTRIES_URL = "https://ourairports.com/data/countries.csv"
 OUTPUT_PATH = Path(__file__).parent / "airports.json"
 IATA_RE = re.compile(r"^[A-Z]{3}$")
+ICAO_RE = re.compile(r"^[A-Z]{4}$")
 UNKNOWN_CITY = "Unknown"
 
 
@@ -45,6 +47,9 @@ def build_airports(rows, country_names):
             "city": (row.get("municipality") or "").strip() or UNKNOWN_CITY,
             "country": country_names.get(country_code, country_code),
         }
+        icao = (row.get("icao_code") or "").strip()
+        if ICAO_RE.match(icao):
+            airports[iata]["icao"] = icao
     return airports
 
 

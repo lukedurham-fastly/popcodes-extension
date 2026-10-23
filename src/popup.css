@@ -119,6 +119,30 @@ h1 {
   flex: none;
 }
 
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-results__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.search-results__item:hover .recents__label {
+  text-decoration: underline;
+}
+
+.search-results__more {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #aaa;
+}
+
 .pop-badges {
   display: flex;
   align-items: center;
@@ -166,4 +190,10 @@ h1 {
 
 .pop-map-link:hover {
   filter: brightness(1.4);
+}
+
+.pop-badge--internal {
+  background: transparent;
+  border: 1px solid #888;
+  color: #ccc;
 }
