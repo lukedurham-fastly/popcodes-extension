@@ -32,10 +32,26 @@ const originalPops = fs.existsSync(popsPath)
   ? fs.readFileSync(popsPath)
   : null;
 
+// 60 synthetic POPs, each 0.1° of longitude further east of AMS than the last,
+// written farthest-first so the nearest-POP test can't pass on insertion order.
+const FIXTURE_NEAR_COUNT = 60;
+const fixtureNearPops = Object.fromEntries(
+  Array.from({ length: FIXTURE_NEAR_COUNT }, (_, i) => FIXTURE_NEAR_COUNT - i).map((n) => [
+    `F${String(n).padStart(2, "0")}`,
+    {
+      name: `Fixture ${String(n).padStart(2, "0")}`,
+      latitude: 52.308613,
+      longitude: 4.763889 + n * 0.1,
+      metro: false,
+    },
+  ])
+);
+
 before(() => {
   fs.writeFileSync(
     popsPath,
     JSON.stringify({
+      ...fixtureNearPops,
       AMS: {
         name: "Amsterdam",
         latitude: 52.308613,
@@ -304,8 +320,15 @@ test("a POP airport code shows Fastly badge and map link", async () => {
     assert.equal(selected.length, 1);
     assert.equal(selected[0].properties.title, "AMS - Amsterdam");
     const nearby = features.filter((f) => f.properties["marker-color"] !== "#FF282D");
-    assert.ok(nearby.length > 0 && nearby.length <= 50);
-    assert.ok(nearby.every((f) => !f.properties.title.startsWith("AMS")));
+    // Of the 62 alternatives (60 fixtures + BNE + IAD), only the 50 nearest —
+    // F01..F50 — should be on the map; F51..F60, BNE and IAD are farther out.
+    assert.deepEqual(
+      nearby.map((f) => f.properties.title).sort(),
+      Array.from({ length: 50 }, (_, i) => {
+        const n = String(i + 1).padStart(2, "0");
+        return `F${n} - Fixture ${n}`;
+      })
+    );
     assert.equal(await mapLink.getAttribute("target"), "_blank");
     assert.equal(
       await mapLink.getAttribute("aria-label"),
