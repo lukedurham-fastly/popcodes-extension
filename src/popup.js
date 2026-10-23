@@ -200,6 +200,60 @@ function createBadge(className, content, label) {
   return badge;
 }
 
+const NEARBY_POP_COUNT = 50;
+const MAP_SELECTED_COLOR = "#FF282D";
+const MAP_NEARBY_COLOR = "#1E6FFF";
+
+function distanceKm(a, b) {
+  const rad = Math.PI / 180;
+  const dLat = (b.latitude - a.latitude) * rad;
+  const dLon = (b.longitude - a.longitude) * rad;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(a.latitude * rad) * Math.cos(b.latitude * rad) * Math.sin(dLon / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+
+function mapFeature(code, pop, color) {
+  return {
+    type: "Feature",
+    properties: {
+      title: `${code} - ${pop.name}`,
+      "marker-color": color,
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [Number(pop.longitude.toFixed(4)), Number(pop.latitude.toFixed(4))],
+    },
+  };
+}
+
+// Google Maps URLs can't set pin colours or show several labelled pins, so the
+// map is a geojson.io link carrying the pins as GeoJSON in the URL fragment
+// (never sent to a server by us — the popup itself still makes no requests).
+function buildMapUrl(code, pop) {
+  const nearby = Object.entries(pops)
+    .filter(([otherCode]) => otherCode !== code)
+    .map(([otherCode, other]) => ({ otherCode, other, km: distanceKm(pop, other) }))
+    .sort((a, b) => a.km - b.km)
+    .slice(0, NEARBY_POP_COUNT);
+
+  const geojson = {
+    type: "FeatureCollection",
+    features: [
+      ...nearby.map(({ otherCode, other }) => mapFeature(otherCode, other, MAP_NEARBY_COLOR)),
+      mapFeature(code, pop, MAP_SELECTED_COLOR),
+    ],
+  };
+  // Base64 because geojson.io truncates a plain-JSON fragment at the "#" in the
+  // hex colours. It doesn't UTF-8 decode, so non-ASCII is \u-escaped first.
+  const ascii = JSON.stringify(geojson).replace(
+    /[\u0080-\uffff]/g,
+    (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`
+  );
+  return `https://geojson.io/#data=data:application/json;base64,${encodeURIComponent(btoa(ascii))}`;
+}
+
 function renderBadges(entry, pop) {
   const badges = document.createElement("div");
   badges.className = "pop-badges";
@@ -241,10 +295,10 @@ function renderBadges(entry, pop) {
 
   const mapLink = document.createElement("a");
   mapLink.className = "pop-map-link";
-  mapLink.href = `https://www.google.com/maps?q=${pop.latitude},${pop.longitude}`;
+  mapLink.href = buildMapUrl(entry.code, pop);
   mapLink.target = "_blank";
   mapLink.rel = "noopener";
-  const mapLabel = `Open ${pop.name} POP location in Google Maps`;
+  const mapLabel = `Open ${pop.name} POP location on a map, with nearby POPs`;
   mapLink.title = mapLabel;
   mapLink.setAttribute("aria-label", mapLabel);
   mapLink.innerHTML =
