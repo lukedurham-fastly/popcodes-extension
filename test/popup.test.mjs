@@ -433,7 +433,7 @@ test("typing more than 3 characters searches by city name", async () => {
     await page.fill("#code-input", "Brisb");
     await page.dispatchEvent("#code-input", "input");
     assert.deepEqual(await page.locator(".search-results__item").allTextContents(), [
-      "BNE — Brisbane, Australia",
+      "BNE — Brisbane, Australia (YBBN)",
     ]);
   });
 });
@@ -444,7 +444,7 @@ test("a city search can show multiple results, Fastly POPs first", async () => {
     await page.dispatchEvent("#code-input", "input");
     const items = await page.locator(".search-results__item").allTextContents();
     assert.ok(items.length > 1, "Amsterdam should match more than one airport");
-    assert.equal(items[0], "AMS — Amsterdam, Netherlands", "POP airport sorts first");
+    assert.equal(items[0], "AMS — Amsterdam, Netherlands (EHAM)", "POP airport sorts first");
   });
 });
 
@@ -500,7 +500,7 @@ test("a 4-letter ICAO code finds its airport", async () => {
     await page.fill("#code-input", "ybbn");
     await page.dispatchEvent("#code-input", "input");
     assert.deepEqual(await page.locator(".search-results__item").allTextContents(), [
-      "BNE — Brisbane, Australia",
+      "BNE — Brisbane, Australia (YBBN)",
     ]);
   });
 });

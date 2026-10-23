@@ -138,7 +138,10 @@ function renderSearchResults(entries, total) {
 
     const label = document.createElement("span");
     label.className = "recents__label";
-    label.textContent = `${entry.code} — ${entry.city}, ${entry.country}`;
+    // Include the ICAO code so a match on it (e.g. YBBN) is visible in the row.
+    const icao = airports[entry.code]?.icao;
+    label.textContent =
+      `${entry.code} — ${entry.city}, ${entry.country}` + (icao ? ` (${icao})` : "");
     item.appendChild(label);
 
     if (pops[entry.code]) {
