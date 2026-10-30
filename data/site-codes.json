@@ -1,0 +1,550 @@
+{
+  "ABQ": [
+    "KABQ"
+  ],
+  "ACC": [
+    "ACC"
+  ],
+  "ADL": [
+    "ADL"
+  ],
+  "AKL": [
+    "AKL"
+  ],
+  "AMS": [
+    "EHAM"
+  ],
+  "APA": [
+    "KAPA"
+  ],
+  "AZP": [
+    "MMJC"
+  ],
+  "BER": [
+    "BER"
+  ],
+  "BFI": [
+    "KBFI",
+    "KRNT"
+  ],
+  "BGY": [
+    "LIME"
+  ],
+  "BKK": [
+    "BKK"
+  ],
+  "BMA": [
+    "ESSB"
+  ],
+  "BNA": [
+    "KBNA"
+  ],
+  "BNE": [
+    "YBBN"
+  ],
+  "BOG": [
+    "SKBO"
+  ],
+  "BOM": [
+    "VANM"
+  ],
+  "BOS": [
+    "KBOS"
+  ],
+  "BQH": [
+    "BQH"
+  ],
+  "BRU": [
+    "BRU"
+  ],
+  "BSB": [
+    "BSB"
+  ],
+  "BTF": [
+    "KBTF"
+  ],
+  "BUR": [
+    "KBUR"
+  ],
+  "CCU": [
+    "CCU"
+  ],
+  "CHC": [
+    "CHC"
+  ],
+  "CHI": [
+    "KIGQ",
+    "KLOT",
+    "KMDW"
+  ],
+  "CMH": [
+    "CMH"
+  ],
+  "CPH": [
+    "CPH"
+  ],
+  "CPT": [
+    "CPT"
+  ],
+  "CWB": [
+    "SBCT"
+  ],
+  "CYW": [
+    "MMCY"
+  ],
+  "DEL": [
+    "VIBW"
+  ],
+  "DEN": [
+    "KDEN"
+  ],
+  "DFW": [
+    "KDFW",
+    "KDAL",
+    "KTKI"
+  ],
+  "DTW": [
+    "DTW"
+  ],
+  "DUB": [
+    "DUB"
+  ],
+  "DUS": [
+    "DUS"
+  ],
+  "DXB": [
+    "DXB"
+  ],
+  "EWR": [
+    "KEWR"
+  ],
+  "EZE": [
+    "EZE"
+  ],
+  "FCO": [
+    "FCO"
+  ],
+  "FJR": [
+    "FJR"
+  ],
+  "FOR": [
+    "FOR"
+  ],
+  "FRA": [
+    "EDDF",
+    "ETOU"
+  ],
+  "GIG": [
+    "GIG"
+  ],
+  "GRU": [
+    "SBGR",
+    "SBSP"
+  ],
+  "HDO": [
+    "HDO"
+  ],
+  "HEL": [
+    "HEL"
+  ],
+  "HHR": [
+    "KHHR"
+  ],
+  "HKG": [
+    "VHHH"
+  ],
+  "HNL": [
+    "HNL"
+  ],
+  "HYD": [
+    "HYD"
+  ],
+  "IAD": [
+    "KCGS",
+    "KIAD",
+    "KHEF"
+  ],
+  "IAH": [
+    "KIAH"
+  ],
+  "ICN": [
+    "ICN"
+  ],
+  "ITM": [
+    "ITM"
+  ],
+  "IXB": [
+    "IXB"
+  ],
+  "IXD": [
+    "IXD"
+  ],
+  "IXM": [
+    "IXM"
+  ],
+  "IXR": [
+    "IXR"
+  ],
+  "IXZ": [
+    "IXZ"
+  ],
+  "JAX": [
+    "JAX"
+  ],
+  "JGA": [
+    "JGA"
+  ],
+  "JNB": [
+    "FAOR"
+  ],
+  "KNU": [
+    "KNU"
+  ],
+  "KTU": [
+    "KTU"
+  ],
+  "KUL": [
+    "KUL"
+  ],
+  "LAX": [
+    "KWHP"
+  ],
+  "LCY": [
+    "EGLC",
+    "EGML"
+  ],
+  "LGA": [
+    "KJFK"
+  ],
+  "LGW": [
+    "LGW"
+  ],
+  "LHR": [
+    "EGLL",
+    "EGWU"
+  ],
+  "LIM": [
+    "SPJC"
+  ],
+  "LIN": [
+    "LIN"
+  ],
+  "LIS": [
+    "LIS"
+  ],
+  "LON": [
+    "LON"
+  ],
+  "LTN": [
+    "LTN"
+  ],
+  "MAA": [
+    "MAA"
+  ],
+  "MAD": [
+    "MAD"
+  ],
+  "MAN": [
+    "EGCC"
+  ],
+  "MCI": [
+    "MCI"
+  ],
+  "MEL": [
+    "MEL"
+  ],
+  "MEM": [
+    "KMEM"
+  ],
+  "MFE": [
+    "MFE"
+  ],
+  "MIA": [
+    "KMIA",
+    "KFLL"
+  ],
+  "MNL": [
+    "MNL"
+  ],
+  "MRS": [
+    "MRS"
+  ],
+  "MSP": [
+    "MSP"
+  ],
+  "MUC": [
+    "MUC"
+  ],
+  "MXP": [
+    "MXP"
+  ],
+  "NMI": [
+    "NMI"
+  ],
+  "NRT": [
+    "RJTF",
+    "RJTT",
+    "RJAA"
+  ],
+  "NYC": [
+    "KTEB"
+  ],
+  "ORD": [
+    "ORD"
+  ],
+  "OSL": [
+    "OSL"
+  ],
+  "PAE": [
+    "PAE"
+  ],
+  "PAO": [
+    "KPAO"
+  ],
+  "PAR": [
+    "LFPB",
+    "LFPG"
+  ],
+  "PDK": [
+    "KATL",
+    "KFTY",
+    "KPDK"
+  ],
+  "PDX": [
+    "PDX"
+  ],
+  "PER": [
+    "YPPH"
+  ],
+  "PHX": [
+    "PHX"
+  ],
+  "PIT": [
+    "KPIT"
+  ],
+  "PNQ": [
+    "PNQ"
+  ],
+  "PPM": [
+    "KPMP"
+  ],
+  "PUT": [
+    "PUT"
+  ],
+  "QAA": [
+    "VISP"
+  ],
+  "QAB": [
+    "VEBS"
+  ],
+  "QAC": [
+    "VECC"
+  ],
+  "QAD": [
+    "VIDX"
+  ],
+  "QAE": [
+    "VOHS"
+  ],
+  "QAF": [
+    "VABP"
+  ],
+  "QAG": [
+    "VIDP"
+  ],
+  "QAH": [
+    "VOBL"
+  ],
+  "QAI": [
+    "VANR"
+  ],
+  "QAJ": [
+    "VEBM"
+  ],
+  "QAK": [
+    "VEHK"
+  ],
+  "QAL": [
+    "VICG"
+  ],
+  "QAM": [
+    "VEDB"
+  ],
+  "QAN": [
+    "VOCI"
+  ],
+  "QAO": [
+    "VABB"
+  ],
+  "QAP": [
+    "VOMM"
+  ],
+  "QAR": [
+    "VEBR"
+  ],
+  "QAS": [
+    "VIAG"
+  ],
+  "QAU": [
+    "VAAH"
+  ],
+  "QAV": [
+    "VIAM"
+  ],
+  "QAW": [
+    "VEDG"
+  ],
+  "QAX": [
+    "VEGT"
+  ],
+  "QAY": [
+    "VIJP"
+  ],
+  "QAZ": [
+    "VILK"
+  ],
+  "QBA": [
+    "VILD"
+  ],
+  "QBB": [
+    "VANP"
+  ],
+  "QBD": [
+    "VIND"
+  ],
+  "QBE": [
+    "VEPT"
+  ],
+  "QBF": [
+    "VISM"
+  ],
+  "QBG": [
+    "VISR"
+  ],
+  "QBI": [
+    "VOBZ"
+  ],
+  "QBJ": [
+    "VOWA"
+  ],
+  "QBK": [
+    "VOML"
+  ],
+  "QBL": [
+    "VAGN"
+  ],
+  "QBM": [
+    "VOVZ"
+  ],
+  "QBN": [
+    "VOHY"
+  ],
+  "QBO": [
+    "VOTV"
+  ],
+  "QPG": [
+    "QPG"
+  ],
+  "QQP": [
+    "QQP"
+  ],
+  "QRO": [
+    "MMQT"
+  ],
+  "RFD": [
+    "RFD"
+  ],
+  "RHV": [
+    "KRHV"
+  ],
+  "RIC": [
+    "KRIC"
+  ],
+  "RPR": [
+    "RPR"
+  ],
+  "RTM": [
+    "EHRD"
+  ],
+  "RUH": [
+    "OERK"
+  ],
+  "SCL": [
+    "SCL"
+  ],
+  "SHL": [
+    "SHL"
+  ],
+  "SIN": [
+    "WSAP",
+    "WSAT",
+    "WSSS"
+  ],
+  "SJC": [
+    "SJC"
+  ],
+  "SMF": [
+    "KSMF"
+  ],
+  "SOF": [
+    "SOF"
+  ],
+  "SSE": [
+    "SSE"
+  ],
+  "STL": [
+    "STL"
+  ],
+  "STP": [
+    "KSTP"
+  ],
+  "STV": [
+    "STV"
+  ],
+  "SXV": [
+    "SXV"
+  ],
+  "SYD": [
+    "SYD"
+  ],
+  "TOJ": [
+    "LETO"
+  ],
+  "TSS": [
+    "TSS"
+  ],
+  "VIE": [
+    "VIE"
+  ],
+  "VNC": [
+    "KVNC"
+  ],
+  "VNS": [
+    "VNS"
+  ],
+  "VTZ": [
+    "VTZ"
+  ],
+  "WLG": [
+    "WLG"
+  ],
+  "WSI": [
+    "YSBK"
+  ],
+  "WVI": [
+    "WVI"
+  ],
+  "YUL": [
+    "YUL"
+  ],
+  "YVR": [
+    "CYVR"
+  ],
+  "YYC": [
+    "YYC"
+  ],
+  "YYZ": [
+    "CYYZ",
+    "CYTZ"
+  ]
+}

@@ -70,6 +70,18 @@ before(() => {
         longitude: -77.455811,
         metro: true,
       },
+      QAV: {
+        name: "Ambala",
+        latitude: 30.364,
+        longitude: 76.177,
+        metro: false,
+      },
+      IXD: {
+        name: "Prayagraj",
+        latitude: 25.44,
+        longitude: 81.73,
+        metro: false,
+      },
     })
   );
 });
@@ -542,6 +554,20 @@ test("a POP shows its internal (ICAO) code when it differs from the POP code", a
     await page.fill("#code-input", "bne");
     await page.dispatchEvent("#code-input", "input");
     assert.equal(await page.textContent(".pop-badge--internal"), "Internal: YBBN");
+  });
+});
+
+test("a POP's internal code comes from Grafana site codes, not the airport ICAO", async () => {
+  await withExtensionPage(async (page) => {
+    // QAV has no airport record; its site code is only in site-codes.json.
+    await page.fill("#code-input", "qav");
+    await page.dispatchEvent("#code-input", "input");
+    assert.equal(await page.textContent(".pop-badge--internal"), "Internal: VIAM");
+
+    // IXD's airport ICAO is VEAB, but Grafana uses IXD itself — no badge.
+    await page.fill("#code-input", "ixd");
+    await page.dispatchEvent("#code-input", "input");
+    assert.equal(await page.locator(".pop-badge--internal").count(), 0);
   });
 });
 

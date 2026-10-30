@@ -1,0 +1,2911 @@
+# Fastly cache node summary: Region -> POP (3-letter code) -> ICAO site set -> nodes
+# Derived from fastly-cache-nodes.toml (snapshot 2026-10-29). INTERNAL USE ONLY.
+# POP codes and locations are from the 'Complete list of POPs' on the Fastly docs page:
+#   https://www.fastly.com/documentation/guides/getting-started/concepts/using-fastlys-global-pop-network/#complete-list-of-pops
+# A site set belonging to a metro POP uses the metro POP code (per the docs' metro list);
+# otherwise the first hostname city code. Each site set is trimmed to 5 sample nodes;
+# node_count is the full set size.
+# [missing_pops] lists docs POPs with no nodes in the source file (code = location).
+
+[meta]
+snapshot_date = "2026-10-29"
+doc_pop_count = 201
+
+[na]
+pop_count = 48
+site_set_count = 59
+
+[na."abq"]
+location = "Albuquerque"
+node_count = 4
+
+[na."abq"."KABQ"]
+node_count = 4
+city_codes = ["abq"]
+nodes = [
+  "cache-abq-kabq5350020",
+  "cache-abq-kabq5350021",
+  "cache-abq-kabq5350022",
+  "cache-abq-kabq5350023",
+]
+
+[na."apa"]
+location = "Denver"
+node_count = 10
+
+[na."apa"."KAPA"]
+node_count = 10
+city_codes = ["apa"]
+nodes = [
+  "cache-apa-kapa5330020",
+  "cache-apa-kapa5330021",
+  "cache-apa-kapa5330022",
+  "cache-apa-kapa5330023",
+  "cache-apa-kapa5330024",
+]
+
+[na."bfi"]
+location = "Seattle"
+node_count = 196
+
+[na."bfi"."KBFI"]
+node_count = 98
+city_codes = ["bfi"]
+nodes = [
+  "cache-bfi-kbfi7400020",
+  "cache-bfi-kbfi7400021",
+  "cache-bfi-kbfi7400022",
+  "cache-bfi-kbfi7400023",
+  "cache-bfi-kbfi7400024",
+]
+
+[na."bfi"."KRNT"]
+node_count = 98
+city_codes = ["bfi"]
+nodes = [
+  "cache-bfi-krnt7300020",
+  "cache-bfi-krnt7300021",
+  "cache-bfi-krnt7300022",
+  "cache-bfi-krnt7300023",
+  "cache-bfi-krnt7300024",
+]
+
+[na."bna"]
+location = "Nashville"
+node_count = 7
+
+[na."bna"."KBNA"]
+node_count = 7
+city_codes = ["bna"]
+nodes = [
+  "cache-bna-kbna5140020",
+  "cache-bna-kbna5140021",
+  "cache-bna-kbna5140022",
+  "cache-bna-kbna5140023",
+  "cache-bna-kbna5141020",
+]
+
+[na."bos"]
+location = "Boston"
+node_count = 40
+
+[na."bos"."KBOS"]
+node_count = 40
+city_codes = ["bos"]
+nodes = [
+  "cache-bos-kbos510020",
+  "cache-bos-kbos510021",
+  "cache-bos-kbos510022",
+  "cache-bos-kbos510023",
+  "cache-bos-kbos510024",
+]
+
+[na."btf"]
+location = "Salt Lake City"
+node_count = 7
+
+[na."btf"."KBTF"]
+node_count = 7
+city_codes = ["btf"]
+nodes = [
+  "cache-btf-kbtf5310020",
+  "cache-btf-kbtf5310021",
+  "cache-btf-kbtf5310022",
+  "cache-btf-kbtf5310023",
+  "cache-btf-kbtf5310024",
+]
+
+[na."bur"]
+location = "Los Angeles"
+node_count = 155
+
+[na."bur"."KBUR"]
+node_count = 155
+city_codes = ["bur"]
+nodes = [
+  "cache-bur-kbur8200020",
+  "cache-bur-kbur8200021",
+  "cache-bur-kbur8200022",
+  "cache-bur-kbur8200023",
+  "cache-bur-kbur8200024",
+]
+
+[na."chi"]
+location = "Chicago"
+node_count = 397
+
+[na."chi"."KIGQ"]
+node_count = 159
+city_codes = ["chi"]
+nodes = [
+  "cache-chi-kigq8000020",
+  "cache-chi-kigq8000021",
+  "cache-chi-kigq8000022",
+  "cache-chi-kigq8000023",
+  "cache-chi-kigq8000024",
+]
+
+[na."chi"."KLOT"]
+node_count = 159
+city_codes = ["chi"]
+nodes = [
+  "cache-chi-klot8100020",
+  "cache-chi-klot8100021",
+  "cache-chi-klot8100022",
+  "cache-chi-klot8100023",
+  "cache-chi-klot8100024",
+]
+
+[na."chi"."KMDW"]
+node_count = 79
+city_codes = ["chi"]
+nodes = [
+  "cache-chi-kmdw8640020",
+  "cache-chi-kmdw8640021",
+  "cache-chi-kmdw8640022",
+  "cache-chi-kmdw8640023",
+  "cache-chi-kmdw8640024",
+]
+
+[na."cmh"]
+location = "Columbus"
+node_count = 112
+
+[na."cmh"."CMH"]
+node_count = 112
+city_codes = ["cmh"]
+nodes = [
+  "cache-cmh1290020",
+  "cache-cmh1290021",
+  "cache-cmh1290022",
+  "cache-cmh1290023",
+  "cache-cmh1290024",
+]
+
+[na."den"]
+location = "Denver"
+node_count = 80
+
+[na."den"."KDEN"]
+node_count = 80
+city_codes = ["den"]
+nodes = [
+  "cache-den-kden1300020",
+  "cache-den-kden1300021",
+  "cache-den-kden1300022",
+  "cache-den-kden1300023",
+  "cache-den-kden1300024",
+]
+
+[na."dfw"]
+location = "Dallas"
+node_count = 417
+
+[na."dfw"."KDAL"]
+node_count = 128
+city_codes = ["dfw"]
+nodes = [
+  "cache-dfw-kdal2120020",
+  "cache-dfw-kdal2120021",
+  "cache-dfw-kdal2120022",
+  "cache-dfw-kdal2120023",
+  "cache-dfw-kdal2120024",
+]
+
+[na."dfw"."KDFW"]
+node_count = 209
+city_codes = ["ads", "dfw"]
+nodes = [
+  "cache-dfw-kdfw8210020",
+  "cache-dfw-kdfw8210021",
+  "cache-dfw-kdfw8210022",
+  "cache-dfw-kdfw8210023",
+  "cache-dfw-kdfw8210024",
+]
+
+[na."dfw"."KTKI"]
+node_count = 80
+city_codes = ["dfw"]
+nodes = [
+  "cache-dfw-ktki8620020",
+  "cache-dfw-ktki8620021",
+  "cache-dfw-ktki8620022",
+  "cache-dfw-ktki8620023",
+  "cache-dfw-ktki8620024",
+]
+
+[na."dtw"]
+location = "Detroit"
+node_count = 15
+
+[na."dtw"."DTW"]
+node_count = 15
+city_codes = ["dtw"]
+nodes = [
+  "cache-dtw8020",
+  "cache-dtw8021",
+  "cache-dtw8022",
+  "cache-dtw8023",
+  "cache-dtw8024",
+]
+
+[na."ewr"]
+location = "Newark"
+node_count = 79
+
+[na."ewr"."KEWR"]
+node_count = 79
+city_codes = ["ewr"]
+nodes = [
+  "cache-ewr-kewr1740020",
+  "cache-ewr-kewr1740021",
+  "cache-ewr-kewr1740022",
+  "cache-ewr-kewr1740023",
+  "cache-ewr-kewr1740024",
+]
+
+[na."hhr"]
+location = "Los Angeles"
+node_count = 40
+
+[na."hhr"."KHHR"]
+node_count = 40
+city_codes = ["hhr"]
+nodes = [
+  "cache-hhr-khhr2060020",
+  "cache-hhr-khhr2060021",
+  "cache-hhr-khhr2060022",
+  "cache-hhr-khhr2060023",
+  "cache-hhr-khhr2060024",
+]
+
+[na."hnl"]
+location = "Honolulu"
+node_count = 10
+
+[na."hnl"."HNL"]
+node_count = 10
+city_codes = ["hnl"]
+nodes = [
+  "cache-hnl1850020",
+  "cache-hnl1850021",
+  "cache-hnl1850022",
+  "cache-hnl1850023",
+  "cache-hnl1850024",
+]
+
+[na."iad"]
+location = "Ashburn"
+node_count = 531
+
+[na."iad"."KCGS"]
+node_count = 252
+city_codes = ["dca", "iad"]
+nodes = [
+  "cache-iad-kcgs7200020",
+  "cache-iad-kcgs7200021",
+  "cache-iad-kcgs7200022",
+  "cache-iad-kcgs7200023",
+  "cache-iad-kcgs7200024",
+]
+
+[na."iad"."KHEF"]
+node_count = 80
+city_codes = ["iad"]
+nodes = [
+  "cache-iad-khef600020",
+  "cache-iad-khef600021",
+  "cache-iad-khef600022",
+  "cache-iad-khef600023",
+  "cache-iad-khef600024",
+]
+
+[na."iad"."KIAD"]
+node_count = 199
+city_codes = ["iad"]
+nodes = [
+  "cache-iad-kiad7000020",
+  "cache-iad-kiad7000021",
+  "cache-iad-kiad7000022",
+  "cache-iad-kiad7000023",
+  "cache-iad-kiad7000024",
+]
+
+[na."iah"]
+location = "Houston"
+node_count = 60
+
+[na."iah"."KIAH"]
+node_count = 60
+city_codes = ["iah"]
+nodes = [
+  "cache-iah-kiah1900020",
+  "cache-iah-kiah1900021",
+  "cache-iah-kiah1900022",
+  "cache-iah-kiah1900023",
+  "cache-iah-kiah1900024",
+]
+
+[na."jax"]
+location = "Jacksonville"
+node_count = 20
+
+[na."jax"."JAX"]
+node_count = 20
+city_codes = ["jax"]
+nodes = [
+  "cache-jax2030020",
+  "cache-jax2030021",
+  "cache-jax2030022",
+  "cache-jax2030023",
+  "cache-jax2030024",
+]
+
+[na."lax"]
+location = "Los Angeles"
+node_count = 126
+
+[na."lax"."KWHP"]
+node_count = 126
+city_codes = ["lax"]
+nodes = [
+  "cache-lax-kwhp1940020",
+  "cache-lax-kwhp1940021",
+  "cache-lax-kwhp1940022",
+  "cache-lax-kwhp1940023",
+  "cache-lax-kwhp1940024",
+]
+
+[na."lga"]
+location = "New York City"
+node_count = 60
+
+[na."lga"."KJFK"]
+node_count = 60
+city_codes = ["lga"]
+nodes = [
+  "cache-lga-kjfk8660020",
+  "cache-lga-kjfk8660021",
+  "cache-lga-kjfk8660022",
+  "cache-lga-kjfk8660023",
+  "cache-lga-kjfk8660024",
+]
+
+[na."mci"]
+location = "Kansas City"
+node_count = 64
+
+[na."mci"."MCI"]
+node_count = 64
+city_codes = ["mci"]
+nodes = [
+  "cache-mci680020",
+  "cache-mci680021",
+  "cache-mci680022",
+  "cache-mci680023",
+  "cache-mci680024",
+]
+
+[na."mem"]
+location = "Memphis"
+node_count = 7
+
+[na."mem"."KMEM"]
+node_count = 7
+city_codes = ["mem"]
+nodes = [
+  "cache-mem-kmem5360020",
+  "cache-mem-kmem5360021",
+  "cache-mem-kmem5360022",
+  "cache-mem-kmem5360023",
+  "cache-mem-kmem5360024",
+]
+
+[na."mfe"]
+location = "McAllen"
+node_count = 64
+
+[na."mfe"."MFE"]
+node_count = 64
+city_codes = ["mfe"]
+nodes = [
+  "cache-mfe400020",
+  "cache-mfe400021",
+  "cache-mfe400022",
+  "cache-mfe400023",
+  "cache-mfe400024",
+]
+
+[na."mia"]
+location = "Miami"
+node_count = 160
+
+[na."mia"."KFLL"]
+node_count = 70
+city_codes = ["mia"]
+nodes = [
+  "cache-mia-kfll1870020",
+  "cache-mia-kfll1870021",
+  "cache-mia-kfll1870022",
+  "cache-mia-kfll1870023",
+  "cache-mia-kfll1870024",
+]
+
+[na."mia"."KMIA"]
+node_count = 90
+city_codes = ["mia"]
+nodes = [
+  "cache-mia-kmia1760020",
+  "cache-mia-kmia1760021",
+  "cache-mia-kmia1760022",
+  "cache-mia-kmia1760023",
+  "cache-mia-kmia1760024",
+]
+
+[na."msp"]
+location = "Minneapolis"
+node_count = 64
+
+[na."msp"."MSP"]
+node_count = 64
+city_codes = ["msp"]
+nodes = [
+  "cache-msp11820",
+  "cache-msp11821",
+  "cache-msp11822",
+  "cache-msp11823",
+  "cache-msp11824",
+]
+
+[na."nyc"]
+location = "New York City"
+node_count = 80
+
+[na."nyc"."KTEB"]
+node_count = 80
+city_codes = ["nyc"]
+nodes = [
+  "cache-nyc-kteb1890020",
+  "cache-nyc-kteb1890021",
+  "cache-nyc-kteb1890022",
+  "cache-nyc-kteb1890023",
+  "cache-nyc-kteb1890024",
+]
+
+[na."ord"]
+location = "Chicago"
+node_count = 32
+
+[na."ord"."ORD"]
+node_count = 32
+city_codes = ["ord"]
+nodes = [
+  "cache-ord1310020",
+  "cache-ord1310021",
+  "cache-ord1310022",
+  "cache-ord1310023",
+  "cache-ord1310024",
+]
+
+[na."pae"]
+location = "Tukwila"
+node_count = 8
+
+[na."pae"."PAE"]
+node_count = 8
+city_codes = ["pae"]
+nodes = [
+  "cache-pae2080020",
+  "cache-pae2080021",
+  "cache-pae2080022",
+  "cache-pae2080023",
+  "cache-pae2080024",
+]
+
+[na."pao"]
+location = "Palo Alto"
+node_count = 63
+
+[na."pao"."KPAO"]
+node_count = 63
+city_codes = ["pao"]
+nodes = [
+  "cache-pao-kpao1770020",
+  "cache-pao-kpao1770021",
+  "cache-pao-kpao1770022",
+  "cache-pao-kpao1770023",
+  "cache-pao-kpao1770024",
+]
+
+[na."pdk"]
+location = "Atlanta"
+node_count = 238
+
+[na."pdk"."KATL"]
+node_count = 80
+city_codes = ["pdk"]
+nodes = [
+  "cache-pdk-katl1840020",
+  "cache-pdk-katl1840021",
+  "cache-pdk-katl1840022",
+  "cache-pdk-katl1840023",
+  "cache-pdk-katl1840024",
+]
+
+[na."pdk"."KFTY"]
+node_count = 79
+city_codes = ["pdk"]
+nodes = [
+  "cache-pdk-kfty8610020",
+  "cache-pdk-kfty8610021",
+  "cache-pdk-kfty8610022",
+  "cache-pdk-kfty8610023",
+  "cache-pdk-kfty8610024",
+]
+
+[na."pdk"."KPDK"]
+node_count = 79
+city_codes = ["pdk"]
+nodes = [
+  "cache-pdk-kpdk2140020",
+  "cache-pdk-kpdk2140021",
+  "cache-pdk-kpdk2140022",
+  "cache-pdk-kpdk2140023",
+  "cache-pdk-kpdk2140024",
+]
+
+[na."pdx"]
+location = "Portland"
+node_count = 15
+
+[na."pdx"."PDX"]
+node_count = 15
+city_codes = ["pdx"]
+nodes = [
+  "cache-pdx12320",
+  "cache-pdx12321",
+  "cache-pdx12322",
+  "cache-pdx12323",
+  "cache-pdx12324",
+]
+
+[na."phx"]
+location = "Phoenix"
+node_count = 128
+
+[na."phx"."PHX"]
+node_count = 128
+city_codes = ["phx"]
+nodes = [
+  "cache-phx1710020",
+  "cache-phx1710021",
+  "cache-phx1710022",
+  "cache-phx1710023",
+  "cache-phx1710024",
+]
+
+[na."pit"]
+location = "Pittsburgh"
+node_count = 14
+
+[na."pit"."KPIT"]
+node_count = 14
+city_codes = ["pit"]
+nodes = [
+  "cache-pit-kpit5180020",
+  "cache-pit-kpit5180021",
+  "cache-pit-kpit5180022",
+  "cache-pit-kpit5180023",
+  "cache-pit-kpit5180024",
+]
+
+[na."ppm"]
+location = "Pompano"
+node_count = 9
+
+[na."ppm"."KPMP"]
+node_count = 9
+city_codes = ["ppm"]
+nodes = [
+  "cache-ppm-kpmp5010020",
+  "cache-ppm-kpmp5010021",
+  "cache-ppm-kpmp5010022",
+  "cache-ppm-kpmp5010023",
+  "cache-ppm-kpmp5010024",
+]
+
+[na."rfd"]
+location = "Chicago"
+node_count = 7
+
+[na."rfd"."RFD"]
+node_count = 7
+city_codes = ["rfd"]
+nodes = [
+  "cache-rfd2130020",
+  "cache-rfd2130021",
+  "cache-rfd2130022",
+  "cache-rfd2130023",
+  "cache-rfd2130024",
+]
+
+[na."rhv"]
+location = "Santa Clara"
+node_count = 9
+
+[na."rhv"."KRHV"]
+node_count = 9
+city_codes = ["rhv"]
+nodes = [
+  "cache-rhv-krhv5320020",
+  "cache-rhv-krhv5320021",
+  "cache-rhv-krhv5320022",
+  "cache-rhv-krhv5320023",
+  "cache-rhv-krhv5321020",
+]
+
+[na."ric"]
+location = "Richmond"
+node_count = 8
+
+[na."ric"."KRIC"]
+node_count = 8
+city_codes = ["ric"]
+nodes = [
+  "cache-ric-kric5230020",
+  "cache-ric-kric5230021",
+  "cache-ric-kric5230022",
+  "cache-ric-kric5230023",
+  "cache-ric-kric5230024",
+]
+
+[na."sjc"]
+location = "San Jose"
+node_count = 128
+
+[na."sjc"."SJC"]
+node_count = 128
+city_codes = ["sjc"]
+nodes = [
+  "cache-sjc1000084",
+  "cache-sjc1000085",
+  "cache-sjc1000086",
+  "cache-sjc1000087",
+  "cache-sjc1000088",
+]
+
+[na."smf"]
+location = "Sacramento"
+node_count = 10
+
+[na."smf"."KSMF"]
+node_count = 10
+city_codes = ["smf"]
+nodes = [
+  "cache-smf-ksmf5340020",
+  "cache-smf-ksmf5340021",
+  "cache-smf-ksmf5340022",
+  "cache-smf-ksmf5340023",
+  "cache-smf-ksmf5340024",
+]
+
+[na."stl"]
+location = "St.Louis"
+node_count = 64
+
+[na."stl"."STL"]
+node_count = 64
+city_codes = ["stl"]
+nodes = [
+  "cache-stl760020",
+  "cache-stl760021",
+  "cache-stl760022",
+  "cache-stl760023",
+  "cache-stl760024",
+]
+
+[na."stp"]
+location = "Roseville"
+node_count = 8
+
+[na."stp"."KSTP"]
+node_count = 8
+city_codes = ["stp"]
+nodes = [
+  "cache-stp-kstp5090020",
+  "cache-stp-kstp5090021",
+  "cache-stp-kstp5090022",
+  "cache-stp-kstp5090023",
+  "cache-stp-kstp5090024",
+]
+
+[na."tss"]
+location = "New York City"
+node_count = 3
+
+[na."tss"."TSS"]
+node_count = 3
+city_codes = ["tss"]
+nodes = [
+  "cache-tss-kjra1420020",
+  "cache-tss-kjra1420021",
+  "cache-tss-kjra1420022",
+]
+
+[na."vnc"]
+location = "West Florida"
+node_count = 8
+
+[na."vnc"."KVNC"]
+node_count = 8
+city_codes = ["vnc"]
+nodes = [
+  "cache-vnc-kvnc5110020",
+  "cache-vnc-kvnc5110021",
+  "cache-vnc-kvnc5110022",
+  "cache-vnc-kvnc5110023",
+  "cache-vnc-kvnc5110024",
+]
+
+[na."wvi"]
+location = "San Jose"
+node_count = 10
+
+[na."wvi"."WVI"]
+node_count = 10
+city_codes = ["wvi"]
+nodes = [
+  "cache-wvi490020",
+  "cache-wvi490021",
+  "cache-wvi490022",
+  "cache-wvi490023",
+  "cache-wvi490024",
+]
+
+[na."yul"]
+location = "Montreal"
+node_count = 63
+
+[na."yul"."YUL"]
+node_count = 63
+city_codes = ["yul"]
+nodes = [
+  "cache-yul1970020",
+  "cache-yul1970021",
+  "cache-yul1970022",
+  "cache-yul1970023",
+  "cache-yul1970024",
+]
+
+[na."yvr"]
+location = "Vancouver"
+node_count = 64
+
+[na."yvr"."CYVR"]
+node_count = 64
+city_codes = ["yvr"]
+nodes = [
+  "cache-yvr-cyvr160020",
+  "cache-yvr-cyvr160021",
+  "cache-yvr-cyvr160022",
+  "cache-yvr-cyvr160023",
+  "cache-yvr-cyvr160024",
+]
+
+[na."yyc"]
+location = "Calgary"
+node_count = 14
+
+[na."yyc"."YYC"]
+node_count = 14
+city_codes = ["yyc"]
+nodes = [
+  "cache-yyc1430020",
+  "cache-yyc1430021",
+  "cache-yyc1430022",
+  "cache-yyc1430023",
+  "cache-yyc1430024",
+]
+
+[na."yyz"]
+location = "Toronto"
+node_count = 127
+
+[na."yyz"."CYTZ"]
+node_count = 63
+city_codes = ["yyz"]
+nodes = [
+  "cache-yyz-cytz480020",
+  "cache-yyz-cytz480021",
+  "cache-yyz-cytz480022",
+  "cache-yyz-cytz480023",
+  "cache-yyz-cytz480024",
+]
+
+[na."yyz"."CYYZ"]
+node_count = 64
+city_codes = ["yyz"]
+nodes = [
+  "cache-yyz-cyyz770020",
+  "cache-yyz-cyyz770021",
+  "cache-yyz-cyyz770022",
+  "cache-yyz-cyyz770023",
+  "cache-yyz-cyyz770024",
+]
+
+[eu]
+pop_count = 33
+site_set_count = 37
+
+[eu."ams"]
+location = "Amsterdam"
+node_count = 80
+
+[eu."ams"."EHAM"]
+node_count = 80
+city_codes = ["ams"]
+nodes = [
+  "cache-ams-eham8680020",
+  "cache-ams-eham8680021",
+  "cache-ams-eham8680022",
+  "cache-ams-eham8680023",
+  "cache-ams-eham8680024",
+]
+
+[eu."ber"]
+location = "Berlin"
+node_count = 40
+
+[eu."ber"."BER"]
+node_count = 40
+city_codes = ["ber"]
+nodes = [
+  "cache-ber1080020",
+  "cache-ber1080021",
+  "cache-ber1080022",
+  "cache-ber1080023",
+  "cache-ber1080024",
+]
+
+[eu."bgy"]
+location = "Milan"
+node_count = 40
+
+[eu."bgy"."LIME"]
+node_count = 40
+city_codes = ["bgy"]
+nodes = [
+  "cache-bgy-lime1210020",
+  "cache-bgy-lime1210021",
+  "cache-bgy-lime1210022",
+  "cache-bgy-lime1210023",
+  "cache-bgy-lime1210024",
+]
+
+[eu."bma"]
+location = "Stockholm"
+node_count = 59
+
+[eu."bma"."ESSB"]
+node_count = 59
+city_codes = ["bma"]
+nodes = [
+  "cache-bma-essb1270020",
+  "cache-bma-essb1270021",
+  "cache-bma-essb1270022",
+  "cache-bma-essb1270023",
+  "cache-bma-essb1270024",
+]
+
+[eu."bqh"]
+location = "London"
+node_count = 20
+
+[eu."bqh"."BQH"]
+node_count = 20
+city_codes = ["bqh"]
+nodes = [
+  "cache-bqh7260020",
+  "cache-bqh7260021",
+  "cache-bqh7260022",
+  "cache-bqh7260023",
+  "cache-bqh7260024",
+]
+
+[eu."bru"]
+location = "Brussels"
+node_count = 40
+
+[eu."bru"."BRU"]
+node_count = 40
+city_codes = ["bru"]
+nodes = [
+  "cache-bru1480020",
+  "cache-bru1480021",
+  "cache-bru1480022",
+  "cache-bru1480023",
+  "cache-bru1480024",
+]
+
+[eu."cph"]
+location = "Copenhagen"
+node_count = 39
+
+[eu."cph"."CPH"]
+node_count = 39
+city_codes = ["cph"]
+nodes = [
+  "cache-cph2320020",
+  "cache-cph2320021",
+  "cache-cph2320022",
+  "cache-cph2320023",
+  "cache-cph2320024",
+]
+
+[eu."dub"]
+location = "Dublin"
+node_count = 77
+
+[eu."dub"."DUB"]
+node_count = 77
+city_codes = ["dub"]
+nodes = [
+  "cache-dub4320",
+  "cache-dub4321",
+  "cache-dub4322",
+  "cache-dub4323",
+  "cache-dub4324",
+]
+
+[eu."dus"]
+location = "Dusseldorf"
+node_count = 20
+
+[eu."dus"."DUS"]
+node_count = 20
+city_codes = ["dus"]
+nodes = [
+  "cache-dus1260020",
+  "cache-dus1260021",
+  "cache-dus1260022",
+  "cache-dus1260023",
+  "cache-dus1260024",
+]
+
+[eu."dxb"]
+location = "Dubai"
+node_count = 15
+
+[eu."dxb"."DXB"]
+node_count = 15
+city_codes = ["dxb"]
+nodes = [
+  "cache-dxb1470020",
+  "cache-dxb1470021",
+  "cache-dxb1470022",
+  "cache-dxb1470023",
+  "cache-dxb1470024",
+]
+
+[eu."fco"]
+location = "Rome"
+node_count = 14
+
+[eu."fco"."FCO"]
+node_count = 14
+city_codes = ["fco"]
+nodes = [
+  "cache-fco2270020",
+  "cache-fco2270021",
+  "cache-fco2270022",
+  "cache-fco2270023",
+  "cache-fco2270024",
+]
+
+[eu."fjr"]
+location = "Fujairah Al Mahta"
+node_count = 15
+
+[eu."fjr"."FJR"]
+node_count = 15
+city_codes = ["fjr"]
+nodes = [
+  "cache-fjr990020",
+  "cache-fjr990021",
+  "cache-fjr990022",
+  "cache-fjr990023",
+  "cache-fjr990024",
+]
+
+[eu."fra"]
+location = "Frankfurt"
+node_count = 409
+
+[eu."fra"."EDDF"]
+node_count = 214
+city_codes = ["fra"]
+nodes = [
+  "cache-fra-eddf8230020",
+  "cache-fra-eddf8230021",
+  "cache-fra-eddf8230022",
+  "cache-fra-eddf8230023",
+  "cache-fra-eddf8230024",
+]
+
+[eu."fra"."ETOU"]
+node_count = 195
+city_codes = ["fra", "wie"]
+nodes = [
+  "cache-fra-etou8220020",
+  "cache-fra-etou8220021",
+  "cache-fra-etou8220022",
+  "cache-fra-etou8220023",
+  "cache-fra-etou8220024",
+]
+
+[eu."hel"]
+location = "Helsinki"
+node_count = 15
+
+[eu."hel"."HEL"]
+node_count = 15
+city_codes = ["hel"]
+nodes = [
+  "cache-hel1410020",
+  "cache-hel1410021",
+  "cache-hel1410022",
+  "cache-hel1410023",
+  "cache-hel1410024",
+]
+
+[eu."lcy"]
+location = "London"
+node_count = 157
+
+[eu."lcy"."EGLC"]
+node_count = 79
+city_codes = ["lcy"]
+nodes = [
+  "cache-lcy-eglc8600020",
+  "cache-lcy-eglc8600021",
+  "cache-lcy-eglc8600022",
+  "cache-lcy-eglc8600023",
+  "cache-lcy-eglc8600024",
+]
+
+[eu."lcy"."EGML"]
+node_count = 78
+city_codes = ["lcy"]
+nodes = [
+  "cache-lcy-egml8630020",
+  "cache-lcy-egml8630021",
+  "cache-lcy-egml8630022",
+  "cache-lcy-egml8630023",
+  "cache-lcy-egml8630025",
+]
+
+[eu."lgw"]
+location = "London"
+node_count = 20
+
+[eu."lgw"."LGW"]
+node_count = 20
+city_codes = ["lgw"]
+nodes = [
+  "cache-lgw7250020",
+  "cache-lgw7250021",
+  "cache-lgw7250022",
+  "cache-lgw7250023",
+  "cache-lgw7250024",
+]
+
+[eu."lhr"]
+location = "London"
+node_count = 138
+
+[eu."lhr"."EGLL"]
+node_count = 78
+city_codes = ["lhr"]
+nodes = [
+  "cache-lhr-egll1980020",
+  "cache-lhr-egll1980021",
+  "cache-lhr-egll1980022",
+  "cache-lhr-egll1980023",
+  "cache-lhr-egll1980024",
+]
+
+[eu."lhr"."EGWU"]
+node_count = 60
+city_codes = ["lhr"]
+nodes = [
+  "cache-lhr-egwu1540020",
+  "cache-lhr-egwu1540021",
+  "cache-lhr-egwu1540022",
+  "cache-lhr-egwu1540023",
+  "cache-lhr-egwu1540024",
+]
+
+[eu."lin"]
+location = "Milan"
+node_count = 63
+
+[eu."lin"."LIN"]
+node_count = 63
+city_codes = ["lin"]
+nodes = [
+  "cache-lin1730020",
+  "cache-lin1730021",
+  "cache-lin1730022",
+  "cache-lin1730023",
+  "cache-lin1730024",
+]
+
+[eu."lis"]
+location = "Lisbon"
+node_count = 39
+
+[eu."lis"."LIS"]
+node_count = 39
+city_codes = ["lis"]
+nodes = [
+  "cache-lis1490020",
+  "cache-lis1490021",
+  "cache-lis1490022",
+  "cache-lis1490023",
+  "cache-lis1490024",
+]
+
+[eu."lon"]
+location = "London"
+node_count = 64
+
+[eu."lon"."LON"]
+node_count = 64
+city_codes = ["lon"]
+nodes = [
+  "cache-lon4220",
+  "cache-lon4221",
+  "cache-lon4222",
+  "cache-lon4223",
+  "cache-lon4224",
+]
+
+[eu."ltn"]
+location = "London"
+node_count = 19
+
+[eu."ltn"."LTN"]
+node_count = 19
+city_codes = ["ltn"]
+nodes = [
+  "cache-ltn7230020",
+  "cache-ltn7230021",
+  "cache-ltn7230022",
+  "cache-ltn7230023",
+  "cache-ltn7230024",
+]
+
+[eu."mad"]
+location = "Madrid"
+node_count = 124
+
+[eu."mad"."MAD"]
+node_count = 124
+city_codes = ["mad"]
+nodes = [
+  "cache-mad2200084",
+  "cache-mad2200085",
+  "cache-mad2200086",
+  "cache-mad2200087",
+  "cache-mad2200088",
+]
+
+[eu."man"]
+location = "Manchester"
+node_count = 57
+
+[eu."man"."EGCC"]
+node_count = 57
+city_codes = ["man"]
+nodes = [
+  "cache-man-egcc8700020",
+  "cache-man-egcc8700021",
+  "cache-man-egcc8700022",
+  "cache-man-egcc8700023",
+  "cache-man-egcc8700024",
+]
+
+[eu."mrs"]
+location = "Marseille"
+node_count = 60
+
+[eu."mrs"."MRS"]
+node_count = 60
+city_codes = ["mrs"]
+nodes = [
+  "cache-mrs1530020",
+  "cache-mrs1530021",
+  "cache-mrs1530022",
+  "cache-mrs1530023",
+  "cache-mrs1530024",
+]
+
+[eu."muc"]
+location = "Munich"
+node_count = 62
+
+[eu."muc"."MUC"]
+node_count = 62
+city_codes = ["muc"]
+nodes = [
+  "cache-muc13920",
+  "cache-muc13921",
+  "cache-muc13922",
+  "cache-muc13923",
+  "cache-muc13924",
+]
+
+[eu."mxp"]
+location = "Milan"
+node_count = 62
+
+[eu."mxp"."MXP"]
+node_count = 62
+city_codes = ["mxp"]
+nodes = [
+  "cache-mxp6921",
+  "cache-mxp6922",
+  "cache-mxp6923",
+  "cache-mxp6924",
+  "cache-mxp6925",
+]
+
+[eu."osl"]
+location = "Oslo"
+node_count = 31
+
+[eu."osl"."OSL"]
+node_count = 31
+city_codes = ["osl"]
+nodes = [
+  "cache-osl6520",
+  "cache-osl6522",
+  "cache-osl6523",
+  "cache-osl6524",
+  "cache-osl6525",
+]
+
+[eu."par"]
+location = "Paris"
+node_count = 159
+
+[eu."par"."LFPB"]
+node_count = 80
+city_codes = ["par"]
+nodes = [
+  "cache-par-lfpb1150020",
+  "cache-par-lfpb1150021",
+  "cache-par-lfpb1150022",
+  "cache-par-lfpb1150023",
+  "cache-par-lfpb1150024",
+]
+
+[eu."par"."LFPG"]
+node_count = 79
+city_codes = ["par"]
+nodes = [
+  "cache-par-lfpg1960020",
+  "cache-par-lfpg1960021",
+  "cache-par-lfpg1960022",
+  "cache-par-lfpg1960023",
+  "cache-par-lfpg1960024",
+]
+
+[eu."qqp"]
+location = "London"
+node_count = 20
+
+[eu."qqp"."QQP"]
+node_count = 20
+city_codes = ["qqp"]
+nodes = [
+  "cache-qqp7240020",
+  "cache-qqp7240021",
+  "cache-qqp7240022",
+  "cache-qqp7240023",
+  "cache-qqp7240024",
+]
+
+[eu."rtm"]
+location = "Amsterdam"
+node_count = 40
+
+[eu."rtm"."EHRD"]
+node_count = 40
+city_codes = ["rtm"]
+nodes = [
+  "cache-rtm-ehrd2290020",
+  "cache-rtm-ehrd2290021",
+  "cache-rtm-ehrd2290022",
+  "cache-rtm-ehrd2290023",
+  "cache-rtm-ehrd2290024",
+]
+
+[eu."sof"]
+location = "Sofia"
+node_count = 40
+
+[eu."sof"."SOF"]
+node_count = 40
+city_codes = ["sof"]
+nodes = [
+  "cache-sof1510020",
+  "cache-sof1510021",
+  "cache-sof1510022",
+  "cache-sof1510023",
+  "cache-sof1510024",
+]
+
+[eu."toj"]
+location = "Madrid"
+node_count = 60
+
+[eu."toj"."LETO"]
+node_count = 60
+city_codes = ["toj"]
+nodes = [
+  "cache-toj-leto2350020",
+  "cache-toj-leto2350021",
+  "cache-toj-leto2350022",
+  "cache-toj-leto2350023",
+  "cache-toj-leto2350024",
+]
+
+[eu."vie"]
+location = "Vienna"
+node_count = 64
+
+[eu."vie"."VIE"]
+node_count = 64
+city_codes = ["vie"]
+nodes = [
+  "cache-vie6320",
+  "cache-vie6321",
+  "cache-vie6322",
+  "cache-vie6323",
+  "cache-vie6324",
+]
+
+[apac]
+pop_count = 9
+site_set_count = 13
+
+[apac."bkk"]
+location = "Bangkok"
+node_count = 20
+
+[apac."bkk"."BKK"]
+node_count = 20
+city_codes = ["bkk"]
+nodes = [
+  "cache-bkk2280020",
+  "cache-bkk2280021",
+  "cache-bkk2280022",
+  "cache-bkk2280023",
+  "cache-bkk2280024",
+]
+
+[apac."hkg"]
+location = "Hong Kong"
+node_count = 62
+
+[apac."hkg"."VHHH"]
+node_count = 62
+city_codes = ["hkg"]
+nodes = [
+  "cache-hkg-vhhh8650020",
+  "cache-hkg-vhhh8650021",
+  "cache-hkg-vhhh8650022",
+  "cache-hkg-vhhh8650023",
+  "cache-hkg-vhhh8650024",
+]
+
+[apac."icn"]
+location = "Seoul"
+node_count = 80
+
+[apac."icn"."ICN"]
+node_count = 80
+city_codes = ["icn"]
+nodes = [
+  "cache-icn1450020",
+  "cache-icn1450021",
+  "cache-icn1450022",
+  "cache-icn1450023",
+  "cache-icn1450024",
+]
+
+[apac."itm"]
+location = "Osaka"
+node_count = 58
+
+[apac."itm"."ITM"]
+node_count = 58
+city_codes = ["itm"]
+nodes = [
+  "cache-itm1220020",
+  "cache-itm1220021",
+  "cache-itm1220022",
+  "cache-itm1220023",
+  "cache-itm1220024",
+]
+
+[apac."kul"]
+location = "Kuala Lumpur"
+node_count = 9
+
+[apac."kul"."KUL"]
+node_count = 9
+city_codes = ["kul"]
+nodes = [
+  "cache-kul9820",
+  "cache-kul9821",
+  "cache-kul9822",
+  "cache-kul9823",
+  "cache-kul9824",
+]
+
+[apac."mnl"]
+location = "Manila"
+node_count = 20
+
+[apac."mnl"."MNL"]
+node_count = 20
+city_codes = ["mnl"]
+nodes = [
+  "cache-mnl2150020",
+  "cache-mnl2150021",
+  "cache-mnl2150022",
+  "cache-mnl2150023",
+  "cache-mnl2150024",
+]
+
+[apac."nrt"]
+location = "Tokyo"
+node_count = 226
+
+[apac."nrt"."RJAA"]
+node_count = 60
+city_codes = ["nrt"]
+nodes = [
+  "cache-nrt-rjaa8190020",
+  "cache-nrt-rjaa8190021",
+  "cache-nrt-rjaa8190022",
+  "cache-nrt-rjaa8190023",
+  "cache-nrt-rjaa8190024",
+]
+
+[apac."nrt"."RJTF"]
+node_count = 88
+city_codes = ["nrt"]
+nodes = [
+  "cache-nrt-rjtf7700020",
+  "cache-nrt-rjtf7700021",
+  "cache-nrt-rjtf7700022",
+  "cache-nrt-rjtf7700023",
+  "cache-nrt-rjtf7700024",
+]
+
+[apac."nrt"."RJTT"]
+node_count = 78
+city_codes = ["nrt"]
+nodes = [
+  "cache-nrt-rjtt7900020",
+  "cache-nrt-rjtt7900021",
+  "cache-nrt-rjtt7900022",
+  "cache-nrt-rjtt7900023",
+  "cache-nrt-rjtt7900024",
+]
+
+[apac."qpg"]
+location = "Singapore"
+node_count = 95
+
+[apac."qpg"."QPG"]
+node_count = 95
+city_codes = ["qpg"]
+nodes = [
+  "cache-qpg120084",
+  "cache-qpg120085",
+  "cache-qpg120086",
+  "cache-qpg120087",
+  "cache-qpg120088",
+]
+
+[apac."sin"]
+location = "Singapore"
+node_count = 239
+
+[apac."sin"."WSAP"]
+node_count = 80
+city_codes = ["sin"]
+nodes = [
+  "cache-sin-wsap440020",
+  "cache-sin-wsap440021",
+  "cache-sin-wsap440022",
+  "cache-sin-wsap440023",
+  "cache-sin-wsap440024",
+]
+
+[apac."sin"."WSAT"]
+node_count = 80
+city_codes = ["sin"]
+nodes = [
+  "cache-sin-wsat1880020",
+  "cache-sin-wsat1880021",
+  "cache-sin-wsat1880022",
+  "cache-sin-wsat1880023",
+  "cache-sin-wsat1880024",
+]
+
+[apac."sin"."WSSS"]
+node_count = 79
+city_codes = ["sin"]
+nodes = [
+  "cache-sin-wsss1830020",
+  "cache-sin-wsss1830021",
+  "cache-sin-wsss1830022",
+  "cache-sin-wsss1830023",
+  "cache-sin-wsss1830024",
+]
+
+[aunz]
+pop_count = 9
+site_set_count = 9
+
+[aunz."adl"]
+location = "Adelaide"
+node_count = 15
+
+[aunz."adl"."ADL"]
+node_count = 15
+city_codes = ["adl"]
+nodes = [
+  "cache-adl2040020",
+  "cache-adl2040021",
+  "cache-adl2040022",
+  "cache-adl2040023",
+  "cache-adl2040024",
+]
+
+[aunz."akl"]
+location = "Auckland"
+node_count = 16
+
+[aunz."akl"."AKL"]
+node_count = 16
+city_codes = ["akl"]
+nodes = [
+  "cache-akl10320",
+  "cache-akl10321",
+  "cache-akl10322",
+  "cache-akl10323",
+  "cache-akl10324",
+]
+
+[aunz."bne"]
+location = "Brisbane"
+node_count = 20
+
+[aunz."bne"."YBBN"]
+node_count = 20
+city_codes = ["bne"]
+nodes = [
+  "cache-bne-ybbn1320020",
+  "cache-bne-ybbn1320021",
+  "cache-bne-ybbn1320022",
+  "cache-bne-ybbn1320023",
+  "cache-bne-ybbn1320024",
+]
+
+[aunz."chc"]
+location = "Christchurch"
+node_count = 9
+
+[aunz."chc"."CHC"]
+node_count = 9
+city_codes = ["chc"]
+nodes = [
+  "cache-chc950021",
+  "cache-chc950022",
+  "cache-chc950023",
+  "cache-chc950024",
+  "cache-chc950025",
+]
+
+[aunz."mel"]
+location = "Melbourne"
+node_count = 64
+
+[aunz."mel"."MEL"]
+node_count = 64
+city_codes = ["mel"]
+nodes = [
+  "cache-mel11220",
+  "cache-mel11221",
+  "cache-mel11222",
+  "cache-mel11223",
+  "cache-mel11224",
+]
+
+[aunz."per"]
+location = "Perth"
+node_count = 16
+
+[aunz."per"."YPPH"]
+node_count = 16
+city_codes = ["per"]
+nodes = [
+  "cache-per-ypph1920020",
+  "cache-per-ypph1920021",
+  "cache-per-ypph1920022",
+  "cache-per-ypph1920023",
+  "cache-per-ypph1920024",
+]
+
+[aunz."syd"]
+location = "Sydney"
+node_count = 64
+
+[aunz."syd"."SYD"]
+node_count = 64
+city_codes = ["syd"]
+nodes = [
+  "cache-syd10120",
+  "cache-syd10121",
+  "cache-syd10122",
+  "cache-syd10123",
+  "cache-syd10124",
+]
+
+[aunz."wlg"]
+location = "Wellington"
+node_count = 8
+
+[aunz."wlg"."WLG"]
+node_count = 8
+city_codes = ["wlg"]
+nodes = [
+  "cache-wlg10420",
+  "cache-wlg10421",
+  "cache-wlg10422",
+  "cache-wlg10423",
+  "cache-wlg10424",
+]
+
+[aunz."wsi"]
+location = "Sydney"
+node_count = 80
+
+[aunz."wsi"."YSBK"]
+node_count = 80
+city_codes = ["wsi"]
+nodes = [
+  "cache-wsi-ysbk1060020",
+  "cache-wsi-ysbk1060021",
+  "cache-wsi-ysbk1060022",
+  "cache-wsi-ysbk1060023",
+  "cache-wsi-ysbk1060024",
+]
+
+[india]
+pop_count = 61
+site_set_count = 61
+
+[india."bom"]
+location = "Mumbai"
+node_count = 80
+
+[india."bom"."VANM"]
+node_count = 80
+city_codes = ["bom"]
+nodes = [
+  "cache-bom-vanm7210020",
+  "cache-bom-vanm7210021",
+  "cache-bom-vanm7210022",
+  "cache-bom-vanm7210023",
+  "cache-bom-vanm7210024",
+]
+
+[india."ccu"]
+location = "Kolkata"
+node_count = 46
+
+[india."ccu"."CCU"]
+node_count = 46
+city_codes = ["ccu"]
+nodes = [
+  "cache-ccu830020",
+  "cache-ccu830021",
+  "cache-ccu830022",
+  "cache-ccu830023",
+  "cache-ccu830025",
+]
+
+[india."del"]
+location = "Delhi"
+node_count = 20
+
+[india."del"."VIBW"]
+node_count = 20
+city_codes = ["del"]
+nodes = [
+  "cache-del-vibw2260020",
+  "cache-del-vibw2260021",
+  "cache-del-vibw2260022",
+  "cache-del-vibw2260023",
+  "cache-del-vibw2260024",
+]
+
+[india."hdo"]
+location = "Delhi-Vikaspuri"
+node_count = 11
+
+[india."hdo"."HDO"]
+node_count = 11
+city_codes = ["hdo"]
+nodes = [
+  "cache-hdo4890020",
+  "cache-hdo4890021",
+  "cache-hdo4890022",
+  "cache-hdo4890023",
+  "cache-hdo4890024",
+]
+
+[india."hyd"]
+location = "Hyderabad"
+node_count = 16
+
+[india."hyd"."HYD"]
+node_count = 16
+city_codes = ["hyd"]
+nodes = [
+  "cache-hyd1500020",
+  "cache-hyd1500021",
+  "cache-hyd1500022",
+  "cache-hyd1500023",
+  "cache-hyd1500024",
+]
+
+[india."ixb"]
+location = "Siliguri"
+node_count = 3
+
+[india."ixb"."IXB"]
+node_count = 3
+city_codes = ["ixb"]
+nodes = [
+  "cache-ixb4400020",
+  "cache-ixb4400022",
+  "cache-ixb4400023",
+]
+
+[india."ixd"]
+location = "Prayagraj"
+node_count = 3
+
+[india."ixd"."IXD"]
+node_count = 3
+city_codes = ["ixd"]
+nodes = [
+  "cache-ixd4450020",
+  "cache-ixd4450022",
+  "cache-ixd4450023",
+]
+
+[india."ixm"]
+location = "Madurai"
+node_count = 9
+
+[india."ixm"."IXM"]
+node_count = 9
+city_codes = ["ixm"]
+nodes = [
+  "cache-ixm4290020",
+  "cache-ixm4290021",
+  "cache-ixm4290023",
+  "cache-ixm4290024",
+  "cache-ixm4290025",
+]
+
+[india."ixr"]
+location = "Ranchi"
+node_count = 3
+
+[india."ixr"."IXR"]
+node_count = 3
+city_codes = ["ixr"]
+nodes = [
+  "cache-ixr4600020",
+  "cache-ixr4600021",
+  "cache-ixr4600022",
+]
+
+[india."ixz"]
+location = "Port Blair"
+node_count = 2
+
+[india."ixz"."IXZ"]
+node_count = 2
+city_codes = ["ixz"]
+nodes = [
+  "cache-ixz4640020",
+  "cache-ixz4640021",
+]
+
+[india."jga"]
+location = "Jamnagar"
+node_count = 6
+
+[india."jga"."JGA"]
+node_count = 6
+city_codes = ["jga"]
+nodes = [
+  "cache-jga4370020",
+  "cache-jga4370021",
+  "cache-jga4370022",
+  "cache-jga4370023",
+  "cache-jga4370024",
+]
+
+[india."knu"]
+location = "Kanpur"
+node_count = 10
+
+[india."knu"."KNU"]
+node_count = 10
+city_codes = ["knu"]
+nodes = [
+  "cache-knu4250020",
+  "cache-knu4250021",
+  "cache-knu4250022",
+  "cache-knu4250023",
+  "cache-knu4250024",
+]
+
+[india."ktu"]
+location = "Kota"
+node_count = 4
+
+[india."ktu"."KTU"]
+node_count = 4
+city_codes = ["ktu"]
+nodes = [
+  "cache-ktu4580020",
+  "cache-ktu4580021",
+  "cache-ktu4580022",
+  "cache-ktu4580023",
+]
+
+[india."maa"]
+location = "Chennai"
+node_count = 32
+
+[india."maa"."MAA"]
+node_count = 32
+city_codes = ["maa"]
+nodes = [
+  "cache-maa10220",
+  "cache-maa10221",
+  "cache-maa10222",
+  "cache-maa10223",
+  "cache-maa10224",
+]
+
+[india."nmi"]
+location = "Mumbai"
+node_count = 12
+
+[india."nmi"."NMI"]
+node_count = 12
+city_codes = ["nmi"]
+nodes = [
+  "cache-nmi4650020",
+  "cache-nmi4650021",
+  "cache-nmi4650022",
+  "cache-nmi4650023",
+  "cache-nmi4650024",
+]
+
+[india."pnq"]
+location = "Pune"
+node_count = 10
+
+[india."pnq"."PNQ"]
+node_count = 10
+city_codes = ["pnq"]
+nodes = [
+  "cache-pnq4240020",
+  "cache-pnq4240021",
+  "cache-pnq4240022",
+  "cache-pnq4240023",
+  "cache-pnq4240024",
+]
+
+[india."put"]
+location = "Anantapur"
+node_count = 4
+
+[india."put"."PUT"]
+node_count = 4
+city_codes = ["put"]
+nodes = [
+  "cache-put4490020",
+  "cache-put4490021",
+  "cache-put4490022",
+  "cache-put4490023",
+]
+
+[india."qaa"]
+location = "Karnal"
+node_count = 3
+
+[india."qaa"."VISP"]
+node_count = 3
+city_codes = ["qaa"]
+nodes = [
+  "cache-qaa-visp4410020",
+  "cache-qaa-visp4410021",
+  "cache-qaa-visp4410022",
+]
+
+[india."qab"]
+location = "Bhubaneswar"
+node_count = 6
+
+[india."qab"."QAB-VEBS"]
+node_count = 6
+city_codes = ["qab"]
+nodes = [
+  "cache-qab-vebs4430020",
+  "cache-qab-vebs4430021",
+  "cache-qab-vebs4430022",
+  "cache-qab-vebs4430023",
+  "cache-qab-vebs4430024",
+]
+
+[india."qac"]
+location = "Howrah"
+node_count = 4
+
+[india."qac"."QAC-VECC"]
+node_count = 4
+city_codes = ["qac"]
+nodes = [
+  "cache-qac-vecc4280020",
+  "cache-qac-vecc4280022",
+  "cache-qac-vecc4280023",
+  "cache-qac-vecc4280024",
+]
+
+[india."qad"]
+location = "Meerut"
+node_count = 10
+
+[india."qad"."VIDX"]
+node_count = 10
+city_codes = ["qad"]
+nodes = [
+  "cache-qad-vidx4270020",
+  "cache-qad-vidx4270021",
+  "cache-qad-vidx4270022",
+  "cache-qad-vidx4270023",
+  "cache-qad-vidx4270024",
+]
+
+[india."qae"]
+location = "Hyderabad"
+node_count = 6
+
+[india."qae"."VOHS"]
+node_count = 6
+city_codes = ["qae"]
+nodes = [
+  "cache-qae-vohs4500020",
+  "cache-qae-vohs4500021",
+  "cache-qae-vohs4500022",
+  "cache-qae-vohs4500023",
+  "cache-qae-vohs4500024",
+]
+
+[india."qaf"]
+location = "Bhopal"
+node_count = 8
+
+[india."qaf"."VABP"]
+node_count = 8
+city_codes = ["qaf"]
+nodes = [
+  "cache-qaf-vabp4260020",
+  "cache-qaf-vabp4260021",
+  "cache-qaf-vabp4260022",
+  "cache-qaf-vabp4260023",
+  "cache-qaf-vabp4260025",
+]
+
+[india."qag"]
+location = "Delhi Lawrence Road"
+node_count = 3
+
+[india."qag"."VIDP"]
+node_count = 3
+city_codes = ["qag"]
+nodes = [
+  "cache-qag-vidp4510021",
+  "cache-qag-vidp4510022",
+  "cache-qag-vidp4510023",
+]
+
+[india."qah"]
+location = "Bangalore Peenya"
+node_count = 5
+
+[india."qah"."VOBL"]
+node_count = 5
+city_codes = ["qah"]
+nodes = [
+  "cache-qah-vobl4420021",
+  "cache-qah-vobl4420022",
+  "cache-qah-vobl4420023",
+  "cache-qah-vobl4420024",
+  "cache-qah-vobl4420025",
+]
+
+[india."qai"]
+location = "Mumbai DAICEC"
+node_count = 6
+
+[india."qai"."VANR"]
+node_count = 6
+city_codes = ["qai"]
+nodes = [
+  "cache-qai-vanr4470020",
+  "cache-qai-vanr4470021",
+  "cache-qai-vanr4470022",
+  "cache-qai-vanr4470023",
+  "cache-qai-vanr4470024",
+]
+
+[india."qaj"]
+location = "Berhampur"
+node_count = 3
+
+[india."qaj"."VEBM"]
+node_count = 3
+city_codes = ["qaj"]
+nodes = [
+  "cache-qaj-vebm4460020",
+  "cache-qaj-vebm4460021",
+  "cache-qaj-vebm4460022",
+]
+
+[india."qak"]
+location = "Sambalpur"
+node_count = 2
+
+[india."qak"."VEHK"]
+node_count = 2
+city_codes = ["qak"]
+nodes = [
+  "cache-qak-vehk4550022",
+  "cache-qak-vehk4550023",
+]
+
+[india."qal"]
+location = "Chandigarh"
+node_count = 10
+
+[india."qal"."VICG"]
+node_count = 10
+city_codes = ["qal"]
+nodes = [
+  "cache-qal-vicg4350020",
+  "cache-qal-vicg4350021",
+  "cache-qal-vicg4350022",
+  "cache-qal-vicg4350023",
+  "cache-qal-vicg4350024",
+]
+
+[india."qam"]
+location = "Dhanbad"
+node_count = 3
+
+[india."qam"."VEDB"]
+node_count = 3
+city_codes = ["qam"]
+nodes = [
+  "cache-qam-vedb4630020",
+  "cache-qam-vedb4630022",
+  "cache-qam-vedb4630023",
+]
+
+[india."qan"]
+location = "Kochi"
+node_count = 4
+
+[india."qan"."VOCI"]
+node_count = 4
+city_codes = ["qan"]
+nodes = [
+  "cache-qan-voci4610020",
+  "cache-qan-voci4610021",
+  "cache-qan-voci4610022",
+  "cache-qan-voci4610023",
+]
+
+[india."qao"]
+location = "Mumbai RCP"
+node_count = 14
+
+[india."qao"."VABB"]
+node_count = 14
+city_codes = ["qao"]
+nodes = [
+  "cache-qao-vabb4300020",
+  "cache-qao-vabb4300021",
+  "cache-qao-vabb4300022",
+  "cache-qao-vabb4300023",
+  "cache-qao-vabb4300024",
+]
+
+[india."qap"]
+location = "Chennai"
+node_count = 11
+
+[india."qap"."VOMM"]
+node_count = 11
+city_codes = ["qap"]
+nodes = [
+  "cache-qap-vomm4700020",
+  "cache-qap-vomm4700021",
+  "cache-qap-vomm4700022",
+  "cache-qap-vomm4700023",
+  "cache-qap-vomm4700024",
+]
+
+[india."qar"]
+location = "Kolkata"
+node_count = 11
+
+[india."qar"."VEBR"]
+node_count = 11
+city_codes = ["qar"]
+nodes = [
+  "cache-qar-vebr4710020",
+  "cache-qar-vebr4710021",
+  "cache-qar-vebr4710022",
+  "cache-qar-vebr4710023",
+  "cache-qar-vebr4710024",
+]
+
+[india."qas"]
+location = "Agra"
+node_count = 11
+
+[india."qas"."VIAG"]
+node_count = 11
+city_codes = ["qas"]
+nodes = [
+  "cache-qas-viag4720020",
+  "cache-qas-viag4720021",
+  "cache-qas-viag4720022",
+  "cache-qas-viag4720023",
+  "cache-qas-viag4720024",
+]
+
+[india."qau"]
+location = "Ahmedabad"
+node_count = 11
+
+[india."qau"."VAAH"]
+node_count = 11
+city_codes = ["qau"]
+nodes = [
+  "cache-qau-vaah4730020",
+  "cache-qau-vaah4730021",
+  "cache-qau-vaah4730022",
+  "cache-qau-vaah4730023",
+  "cache-qau-vaah4730024",
+]
+
+[india."qav"]
+location = "Ambala"
+node_count = 6
+
+[india."qav"."VIAM"]
+node_count = 6
+city_codes = ["qav"]
+nodes = [
+  "cache-qav-viam4740020",
+  "cache-qav-viam4740021",
+  "cache-qav-viam4740022",
+  "cache-qav-viam4740023",
+  "cache-qav-viam4740024",
+]
+
+[india."qaw"]
+location = "Asansol"
+node_count = 11
+
+[india."qaw"."VEDG"]
+node_count = 11
+city_codes = ["qaw"]
+nodes = [
+  "cache-qaw-vedg4750020",
+  "cache-qaw-vedg4750021",
+  "cache-qaw-vedg4750022",
+  "cache-qaw-vedg4750023",
+  "cache-qaw-vedg4750024",
+]
+
+[india."qax"]
+location = "Guwahati"
+node_count = 11
+
+[india."qax"."VEGT"]
+node_count = 11
+city_codes = ["qax"]
+nodes = [
+  "cache-qax-vegt4680020",
+  "cache-qax-vegt4680021",
+  "cache-qax-vegt4680022",
+  "cache-qax-vegt4680023",
+  "cache-qax-vegt4680024",
+]
+
+[india."qay"]
+location = "Jaipur"
+node_count = 11
+
+[india."qay"."VIJP"]
+node_count = 11
+city_codes = ["qay"]
+nodes = [
+  "cache-qay-vijp4670020",
+  "cache-qay-vijp4670021",
+  "cache-qay-vijp4670022",
+  "cache-qay-vijp4670023",
+  "cache-qay-vijp4670024",
+]
+
+[india."qaz"]
+location = "Lucknow"
+node_count = 11
+
+[india."qaz"."VILK"]
+node_count = 11
+city_codes = ["qaz"]
+nodes = [
+  "cache-qaz-vilk4770020",
+  "cache-qaz-vilk4770021",
+  "cache-qaz-vilk4770022",
+  "cache-qaz-vilk4770023",
+  "cache-qaz-vilk4770024",
+]
+
+[india."qba"]
+location = "Ludhiana"
+node_count = 6
+
+[india."qba"."VILD"]
+node_count = 6
+city_codes = ["qba"]
+nodes = [
+  "cache-qba-vild4780020",
+  "cache-qba-vild4780021",
+  "cache-qba-vild4780022",
+  "cache-qba-vild4780023",
+  "cache-qba-vild4780024",
+]
+
+[india."qbb"]
+location = "Nagpur"
+node_count = 11
+
+[india."qbb"."VANP"]
+node_count = 11
+city_codes = ["qbb"]
+nodes = [
+  "cache-qbb-vanp4790020",
+  "cache-qbb-vanp4790021",
+  "cache-qbb-vanp4790022",
+  "cache-qbb-vanp4790023",
+  "cache-qbb-vanp4790024",
+]
+
+[india."qbd"]
+location = "Noida"
+node_count = 11
+
+[india."qbd"."VIND"]
+node_count = 11
+city_codes = ["qbd"]
+nodes = [
+  "cache-qbd-vind4800020",
+  "cache-qbd-vind4800021",
+  "cache-qbd-vind4800022",
+  "cache-qbd-vind4800023",
+  "cache-qbd-vind4800024",
+]
+
+[india."qbe"]
+location = "Patna"
+node_count = 10
+
+[india."qbe"."VEPT"]
+node_count = 10
+city_codes = ["qbe"]
+nodes = [
+  "cache-qbe-vept4810020",
+  "cache-qbe-vept4810021",
+  "cache-qbe-vept4810022",
+  "cache-qbe-vept4810023",
+  "cache-qbe-vept4810024",
+]
+
+[india."qbf"]
+location = "Shimla"
+node_count = 6
+
+[india."qbf"."VISM"]
+node_count = 6
+city_codes = ["qbf"]
+nodes = [
+  "cache-qbf-vism4820020",
+  "cache-qbf-vism4820021",
+  "cache-qbf-vism4820022",
+  "cache-qbf-vism4820023",
+  "cache-qbf-vism4820024",
+]
+
+[india."qbg"]
+location = "Srinagar-Nahota"
+node_count = 6
+
+[india."qbg"."VISR"]
+node_count = 6
+city_codes = ["qbg"]
+nodes = [
+  "cache-qbg-visr4830020",
+  "cache-qbg-visr4830021",
+  "cache-qbg-visr4830022",
+  "cache-qbg-visr4830023",
+  "cache-qbg-visr4830024",
+]
+
+[india."qbi"]
+location = "Vijaywada"
+node_count = 6
+
+[india."qbi"."VOBZ"]
+node_count = 6
+city_codes = ["qbi"]
+nodes = [
+  "cache-qbi-vobz4840020",
+  "cache-qbi-vobz4840021",
+  "cache-qbi-vobz4840022",
+  "cache-qbi-vobz4840023",
+  "cache-qbi-vobz4840024",
+]
+
+[india."qbj"]
+location = "Warrangal"
+node_count = 6
+
+[india."qbj"."VOWA"]
+node_count = 6
+city_codes = ["qbj"]
+nodes = [
+  "cache-qbj-vowa4850020",
+  "cache-qbj-vowa4850021",
+  "cache-qbj-vowa4850022",
+  "cache-qbj-vowa4850023",
+  "cache-qbj-vowa4850024",
+]
+
+[india."qbk"]
+location = "Bangalore"
+node_count = 11
+
+[india."qbk"."VOML"]
+node_count = 11
+city_codes = ["qbk"]
+nodes = [
+  "cache-qbk-voml4860020",
+  "cache-qbk-voml4860021",
+  "cache-qbk-voml4860022",
+  "cache-qbk-voml4860023",
+  "cache-qbk-voml4860024",
+]
+
+[india."qbl"]
+location = "Bhopal"
+node_count = 11
+
+[india."qbl"."VAGN"]
+node_count = 11
+city_codes = ["qbl"]
+nodes = [
+  "cache-qbl-vagn4870020",
+  "cache-qbl-vagn4870021",
+  "cache-qbl-vagn4870022",
+  "cache-qbl-vagn4870023",
+  "cache-qbl-vagn4870024",
+]
+
+[india."qbm"]
+location = "Bhubaneshwar"
+node_count = 11
+
+[india."qbm"."VOVZ"]
+node_count = 11
+city_codes = ["qbm"]
+nodes = [
+  "cache-qbm-vovz4880020",
+  "cache-qbm-vovz4880021",
+  "cache-qbm-vovz4880022",
+  "cache-qbm-vovz4880023",
+  "cache-qbm-vovz4880024",
+]
+
+[india."qbn"]
+location = "Hyderabad"
+node_count = 11
+
+[india."qbn"."VOHY"]
+node_count = 11
+city_codes = ["qbn"]
+nodes = [
+  "cache-qbn-vohy4900020",
+  "cache-qbn-vohy4900021",
+  "cache-qbn-vohy4900022",
+  "cache-qbn-vohy4900023",
+  "cache-qbn-vohy4900024",
+]
+
+[india."qbo"]
+location = "Kochi"
+node_count = 6
+
+[india."qbo"."VOTV"]
+node_count = 6
+city_codes = ["qbo"]
+nodes = [
+  "cache-qbo-votv4910020",
+  "cache-qbo-votv4910021",
+  "cache-qbo-votv4910022",
+  "cache-qbo-votv4910023",
+  "cache-qbo-votv4910024",
+]
+
+[india."rpr"]
+location = "Raipur"
+node_count = 4
+
+[india."rpr"."RPR"]
+node_count = 4
+city_codes = ["rpr"]
+nodes = [
+  "cache-rpr4590020",
+  "cache-rpr4590021",
+  "cache-rpr4590022",
+  "cache-rpr4590023",
+]
+
+[india."shl"]
+location = "Shillong"
+node_count = 4
+
+[india."shl"."SHL"]
+node_count = 4
+city_codes = ["shl"]
+nodes = [
+  "cache-shl4480020",
+  "cache-shl4480021",
+  "cache-shl4480022",
+  "cache-shl4480023",
+]
+
+[india."sse"]
+location = "Solapur"
+node_count = 3
+
+[india."sse"."SSE"]
+node_count = 3
+city_codes = ["sse"]
+nodes = [
+  "cache-sse4570020",
+  "cache-sse4570022",
+  "cache-sse4570023",
+]
+
+[india."stv"]
+location = "Surat"
+node_count = 6
+
+[india."stv"."STV"]
+node_count = 6
+city_codes = ["stv"]
+nodes = [
+  "cache-stv4330020",
+  "cache-stv4330021",
+  "cache-stv4330022",
+  "cache-stv4330023",
+  "cache-stv4330024",
+]
+
+[india."sxv"]
+location = "Salem"
+node_count = 3
+
+[india."sxv"."SXV"]
+node_count = 3
+city_codes = ["sxv"]
+nodes = [
+  "cache-sxv4660020",
+  "cache-sxv4660022",
+  "cache-sxv4660023",
+]
+
+[india."vns"]
+location = "Varanasi"
+node_count = 3
+
+[india."vns"."VNS"]
+node_count = 3
+city_codes = ["vns"]
+nodes = [
+  "cache-vns4440021",
+  "cache-vns4440022",
+  "cache-vns4440023",
+]
+
+[india."vtz"]
+location = "Visakhapatnam"
+node_count = 4
+
+[india."vtz"."VTZ"]
+node_count = 4
+city_codes = ["vtz"]
+nodes = [
+  "cache-vtz4530020",
+  "cache-vtz4530021",
+  "cache-vtz4530022",
+  "cache-vtz4530023",
+]
+
+[latam]
+pop_count = 7
+site_set_count = 7
+
+[latam."azp"]
+location = "Mexico City"
+node_count = 20
+
+[latam."azp"."MMJC"]
+node_count = 20
+city_codes = ["azp"]
+nodes = [
+  "cache-azp-mmjc1570020",
+  "cache-azp-mmjc1570021",
+  "cache-azp-mmjc1570022",
+  "cache-azp-mmjc1570023",
+  "cache-azp-mmjc1570024",
+]
+
+[latam."bog"]
+location = "Bogota"
+node_count = 59
+
+[latam."bog"."SKBO"]
+node_count = 59
+city_codes = ["bog"]
+nodes = [
+  "cache-bog-skbo2340020",
+  "cache-bog-skbo2340021",
+  "cache-bog-skbo2340022",
+  "cache-bog-skbo2340023",
+  "cache-bog-skbo2340024",
+]
+
+[latam."cyw"]
+location = "Queretaro"
+node_count = 40
+
+[latam."cyw"."MMCY"]
+node_count = 40
+city_codes = ["cyw"]
+nodes = [
+  "cache-cyw-mmcy1560020",
+  "cache-cyw-mmcy1560021",
+  "cache-cyw-mmcy1560022",
+  "cache-cyw-mmcy1560023",
+  "cache-cyw-mmcy1560024",
+]
+
+[latam."eze"]
+location = "Buenos Aires"
+node_count = 58
+
+[latam."eze"."EZE"]
+node_count = 58
+city_codes = ["eze"]
+nodes = [
+  "cache-eze2230020",
+  "cache-eze2230021",
+  "cache-eze2230022",
+  "cache-eze2230023",
+  "cache-eze2230024",
+]
+
+[latam."lim"]
+location = "Lima"
+node_count = 40
+
+[latam."lim"."SPJC"]
+node_count = 40
+city_codes = ["lim"]
+nodes = [
+  "cache-lim-spjc1280020",
+  "cache-lim-spjc1280021",
+  "cache-lim-spjc1280022",
+  "cache-lim-spjc1280023",
+  "cache-lim-spjc1280024",
+]
+
+[latam."qro"]
+location = "Queretaro"
+node_count = 60
+
+[latam."qro"."MMQT"]
+node_count = 60
+city_codes = ["qro"]
+nodes = [
+  "cache-qro-mmqt1070020",
+  "cache-qro-mmqt1070021",
+  "cache-qro-mmqt1070022",
+  "cache-qro-mmqt1070023",
+  "cache-qro-mmqt1070024",
+]
+
+[latam."scl"]
+location = "Santiago"
+node_count = 58
+
+[latam."scl"."SCL"]
+node_count = 58
+city_codes = ["scl"]
+nodes = [
+  "cache-scl2220020",
+  "cache-scl2220021",
+  "cache-scl2220022",
+  "cache-scl2220023",
+  "cache-scl2220024",
+]
+
+[brazil]
+pop_count = 5
+site_set_count = 6
+
+[brazil."bsb"]
+location = "Brasilia"
+node_count = 20
+
+[brazil."bsb"."BSB"]
+node_count = 20
+city_codes = ["bsb"]
+nodes = [
+  "cache-bsb500020",
+  "cache-bsb500021",
+  "cache-bsb500022",
+  "cache-bsb500023",
+  "cache-bsb500024",
+]
+
+[brazil."cwb"]
+location = "Curitiba"
+node_count = 20
+
+[brazil."cwb"."SBCT"]
+node_count = 20
+city_codes = ["cwb"]
+nodes = [
+  "cache-cwb-sbct2070020",
+  "cache-cwb-sbct2070021",
+  "cache-cwb-sbct2070022",
+  "cache-cwb-sbct2070023",
+  "cache-cwb-sbct2070024",
+]
+
+[brazil."for"]
+location = "Fortaleza"
+node_count = 20
+
+[brazil."for"."FOR"]
+node_count = 20
+city_codes = ["for"]
+nodes = [
+  "cache-for1520020",
+  "cache-for1520021",
+  "cache-for1520022",
+  "cache-for1520023",
+  "cache-for1520024",
+]
+
+[brazil."gig"]
+location = "Rio de Janeiro"
+node_count = 68
+
+[brazil."gig"."GIG"]
+node_count = 68
+city_codes = ["gig"]
+nodes = [
+  "cache-gig2250020",
+  "cache-gig2250021",
+  "cache-gig2250022",
+  "cache-gig2250023",
+  "cache-gig2250024",
+]
+
+[brazil."gru"]
+location = "Sao Paulo"
+node_count = 141
+
+[brazil."gru"."SBGR"]
+node_count = 79
+city_codes = ["gru"]
+nodes = [
+  "cache-gru-sbgr1930020",
+  "cache-gru-sbgr1930021",
+  "cache-gru-sbgr1930022",
+  "cache-gru-sbgr1930023",
+  "cache-gru-sbgr1930024",
+]
+
+[brazil."gru"."SBSP"]
+node_count = 62
+city_codes = ["gru"]
+nodes = [
+  "cache-gru-sbsp2090020",
+  "cache-gru-sbsp2090021",
+  "cache-gru-sbsp2090022",
+  "cache-gru-sbsp2090023",
+  "cache-gru-sbsp2090024",
+]
+
+[africa]
+pop_count = 4
+site_set_count = 4
+
+[africa."acc"]
+location = "Ghana"
+node_count = 10
+
+[africa."acc"."ACC"]
+node_count = 10
+city_codes = ["acc"]
+nodes = [
+  "cache-acc9620",
+  "cache-acc9621",
+  "cache-acc9622",
+  "cache-acc9623",
+  "cache-acc9624",
+]
+
+[africa."cpt"]
+location = "Cape Town"
+node_count = 10
+
+[africa."cpt"."CPT"]
+node_count = 10
+city_codes = ["cpt"]
+nodes = [
+  "cache-cpt13820",
+  "cache-cpt13821",
+  "cache-cpt13822",
+  "cache-cpt13823",
+  "cache-cpt13824",
+]
+
+[africa."jnb"]
+location = "Johannesburg"
+node_count = 19
+
+[africa."jnb"."FAOR"]
+node_count = 19
+city_codes = ["jnb"]
+nodes = [
+  "cache-jnb-faor730020",
+  "cache-jnb-faor730021",
+  "cache-jnb-faor730022",
+  "cache-jnb-faor730023",
+  "cache-jnb-faor730024",
+]
+
+[africa."nbo"]
+# not on the Fastly docs list
+node_count = 16
+
+[africa."nbo"."HKJK"]
+node_count = 16
+city_codes = ["nbo"]
+nodes = [
+  "cache-nbo-hkjk1590020",
+  "cache-nbo-hkjk1590022",
+  "cache-nbo-hkjk1590023",
+  "cache-nbo-hkjk1590024",
+  "cache-nbo-hkjk1590025",
+]
+
+[ksa]
+pop_count = 1
+site_set_count = 1
+
+[ksa."ruh"]
+location = "Riyadh"
+node_count = 32
+
+[ksa."ruh"."OERK"]
+node_count = 32
+city_codes = ["ruh"]
+nodes = [
+  "cache-ruh-oerk1860020",
+  "cache-ruh-oerk1860021",
+  "cache-ruh-oerk1860022",
+  "cache-ruh-oerk1860023",
+  "cache-ruh-oerk1860024",
+]
+
+[missing_pops]
+saf = "Albuquerque"
+hmp = "Atlanta"
+bwi = "Baltimore"
+ttd = "Beaverton"
+owd = "Boston"
+ugn = "Chicago"
+bjc = "Denver"
+yip = "Detroit"
+dwh = "Houston"
+crg = "Jacksonville"
+olv = "Memphis"
+mic = "Minneapolis"
+srq = "Naples"
+mqy = "Nashville"
+ttn = "Philadelphia"
+agc = "Pittsburgh"
+fxe = "Pompano"
+fle = "Richmond"
+mcc = "Sacramento"
+jce = "San Francisco"
+pwt = "Seattle"
+tlh = "Tallahassee"
