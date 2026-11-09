@@ -100,13 +100,25 @@ async function withExtensionPage(fn) {
   const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "popcodes-pw-"));
   const context = await chromium.launchPersistentContext(userDataDir, {
     headless: false,
+    colorScheme: "dark",
     args: [
+      // Dark browser chrome/new-tab so the headed window doesn't flash white.
+      "--force-dark-mode",
       `--disable-extensions-except=${extensionPath}`,
       `--load-extension=${extensionPath}`,
     ],
   });
 
   try {
+    // Dev-only: paint every page dark from the first frame (the shipped CSS is
+    // untouched) so headed test runs aren't bright and distracting.
+    await context.addInitScript(() => {
+      const paint = () => {
+        document.documentElement.style.setProperty("background", "#111", "important");
+      };
+      if (document.documentElement) paint();
+      document.addEventListener("DOMContentLoaded", paint);
+    });
     const extensionId = extensionIdFromPath(extensionPath);
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extensionId}/src/popup.html`);
