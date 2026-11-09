@@ -153,6 +153,9 @@ function renderSearchResults(entries, total) {
 
     if (pops[entry.code]) {
       item.appendChild(renderRecentPopIcon());
+      if (pops[entry.code].shield) {
+        item.appendChild(createShieldIcon(pops[entry.code].shield));
+      }
     }
 
     item.addEventListener("click", () => selectEntry(entry));
@@ -205,6 +208,33 @@ function createBadge(className, content, label) {
   badge.setAttribute("aria-label", label);
   badge.append(...[].concat(content));
   return badge;
+}
+
+// Small icon-only indicator (shield) with a tooltip. `paths` is
+// static markup defined in this file, never data from pops.json.
+function createIconBadge(className, paths, label) {
+  const icon = document.createElement("span");
+  icon.className = `pop-icon ${className}`;
+  icon.title = label;
+  icon.setAttribute("aria-label", label);
+  // The <title> inside the SVG is a fallback tooltip; pointer-events:none on the
+  // SVG (see CSS) makes the hover land on the span, which carries the title.
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("width", "14");
+  svg.setAttribute("height", "14");
+  svg.innerHTML = `<title></title>${paths}`;
+  svg.querySelector("title").textContent = label;
+  icon.appendChild(svg);
+  return icon;
+}
+
+function createShieldIcon(shield) {
+  return createIconBadge(
+    "pop-icon--shield",
+    '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/>',
+    shield
+  );
 }
 
 const NEARBY_POP_COUNT = 50;
@@ -289,7 +319,7 @@ function renderBadges(entry, pop) {
   if (internalCodes.length) {
     const list = internalCodes.join(", ");
     badges.appendChild(
-      createBadge("pop-badge--internal", `Internal: ${list}`, `Internal (site) code: ${list}`)
+      createBadge("pop-badge--internal", list, `Internal (site) code: ${list}`)
     );
   }
 
@@ -299,6 +329,10 @@ function renderBadges(entry, pop) {
 
   if (pop.metro) {
     badges.appendChild(createBadge("pop-badge--metro", "Metro", "Metro POP"));
+  }
+
+  if (pop.shield) {
+    badges.appendChild(createShieldIcon(pop.shield));
   }
 
   const mapLink = document.createElement("a");
@@ -356,6 +390,9 @@ function renderList(recents) {
     // "no POPs", not an error, same as showResult() already treats it.
     if (pops[entry.code]) {
       item.appendChild(renderRecentPopIcon());
+      if (pops[entry.code].shield) {
+        item.appendChild(createShieldIcon(pops[entry.code].shield));
+      }
     }
 
     item.appendChild(renderDeleteButton(entry));

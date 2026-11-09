@@ -197,3 +197,21 @@ h1 {
   border: 1px solid #888;
   color: #ccc;
 }
+
+.pop-icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.pop-icon svg {
+  fill: #ccc;
+}
+
+.pop-icon--shield svg {
+  fill: #5aa9ff;
+}
+
+.pop-icon svg {
+  pointer-events: none;
+}

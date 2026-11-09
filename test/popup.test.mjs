@@ -521,7 +521,7 @@ test("pressing Enter on a single search match selects it", async () => {
     await page.press("#code-input", "Enter");
     assert.match(await page.textContent("#result"), /^BNE — Brisbane, Australia/);
     assert.equal(await page.locator(".search-results__item").count(), 0);
-    assert.equal(await page.textContent(".pop-badge--internal"), "Internal: YBBN");
+    assert.equal(await page.textContent(".pop-badge--internal"), "YBBN");
     assert.equal(await page.inputValue("#code-input"), "");
     assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
       "BNE — Brisbane, Australia",
@@ -553,7 +553,7 @@ test("a POP shows its internal (ICAO) code when it differs from the POP code", a
   await withExtensionPage(async (page) => {
     await page.fill("#code-input", "bne");
     await page.dispatchEvent("#code-input", "input");
-    assert.equal(await page.textContent(".pop-badge--internal"), "Internal: YBBN");
+    assert.equal(await page.textContent(".pop-badge--internal"), "YBBN");
   });
 });
 
@@ -562,7 +562,7 @@ test("a POP's internal code comes from Grafana site codes, not the airport ICAO"
     // QAV has no airport record; its site code is only in site-codes.json.
     await page.fill("#code-input", "qav");
     await page.dispatchEvent("#code-input", "input");
-    assert.equal(await page.textContent(".pop-badge--internal"), "Internal: VIAM");
+    assert.equal(await page.textContent(".pop-badge--internal"), "VIAM");
 
     // IXD's airport ICAO is VEAB, but Grafana uses IXD itself — no badge.
     await page.fill("#code-input", "ixd");

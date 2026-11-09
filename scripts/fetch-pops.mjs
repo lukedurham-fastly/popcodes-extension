@@ -7,6 +7,7 @@
 // Output is keyed by POP code, trimmed to what the popup needs (matching the
 // dataset-minimalism convention):
 //   { "AMS": { "name": "Amsterdam", "latitude": 52.3, "longitude": 4.7, "metro": false }, ... }
+// `shield` (the POP's shield name) is only written when the API provides it.
 // Metro POPs carry a "(Metro)" suffix on the API's name field; the suffix is
 // stripped and recorded as the boolean `metro` flag instead.
 
@@ -57,6 +58,7 @@ for (const dc of datacenters) {
     longitude: dc.coordinates.longitude,
     metro,
   };
+  if (typeof dc.shield === "string" && dc.shield) pops[dc.code].shield = dc.shield;
 
   // Some POPs use codes that aren't in the master airport dataset: interim
   // IATA codes for airports not yet added (e.g. WSI, Western Sydney
