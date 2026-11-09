@@ -251,13 +251,17 @@ function distanceKm(a, b) {
   return 12742 * Math.asin(Math.sqrt(h));
 }
 
+// Default shield POPs (those with a `shield` name in the POP list) get a Maki
+// star on their pin; geojson.io's simplestyle reads `marker-symbol`.
 function mapFeature(code, pop, color) {
+  const properties = {
+    title: `${code} - ${pop.name}`,
+    "marker-color": color,
+  };
+  if (pop.shield) properties["marker-symbol"] = "star";
   return {
     type: "Feature",
-    properties: {
-      title: `${code} - ${pop.name}`,
-      "marker-color": color,
-    },
+    properties,
     geometry: {
       type: "Point",
       coordinates: [Number(pop.longitude.toFixed(4)), Number(pop.latitude.toFixed(4))],

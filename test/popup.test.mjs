@@ -43,6 +43,7 @@ const fixtureNearPops = Object.fromEntries(
       latitude: 52.308613,
       longitude: 4.763889 + n * 0.1,
       metro: false,
+      ...(n === 1 ? { shield: "fixture-shield" } : {}),
     },
   ])
 );
@@ -57,6 +58,7 @@ before(() => {
         latitude: 52.308613,
         longitude: 4.763889,
         metro: false,
+        shield: "amsterdam-nl",
       },
       BNE: {
         name: "Brisbane",
@@ -331,6 +333,12 @@ test("a POP airport code shows Fastly badge and map link", async () => {
     const selected = features.filter((f) => f.properties["marker-color"] === "#FF282D");
     assert.equal(selected.length, 1);
     assert.equal(selected[0].properties.title, "AMS - Amsterdam");
+    assert.equal(selected[0].properties["marker-symbol"], "star", "shield POP pin is a star");
+    assert.deepEqual(
+      features.filter((f) => f.properties["marker-symbol"]).map((f) => f.properties.title).sort(),
+      ["AMS - Amsterdam", "F01 - Fixture 01"],
+      "only shield POPs get a star"
+    );
     const nearby = features.filter((f) => f.properties["marker-color"] !== "#FF282D");
     // Of the 62 alternatives (60 fixtures + BNE + IAD), only the 50 nearest —
     // F01..F50 — should be on the map; F51..F60, BNE and IAD are farther out.
@@ -486,7 +494,12 @@ test("a city search can show multiple results, Fastly POPs first", async () => {
     await page.dispatchEvent("#code-input", "input");
     const items = await page.locator(".search-results__item").allTextContents();
     assert.ok(items.length > 1, "Amsterdam should match more than one airport");
-    assert.equal(items[0], "AMS — Amsterdam, Netherlands (EHAM)", "POP airport sorts first");
+    // The shield icon's <title> text rides along in textContent.
+    assert.equal(
+      items[0],
+      "AMS — Amsterdam, Netherlands (EHAM)amsterdam-nl",
+      "POP airport sorts first"
+    );
   });
 });
 
@@ -510,7 +523,7 @@ test("clicking a search result shows it, adds it to recents and clears the input
       () => document.querySelectorAll("#recents-list li").length === 1
     );
     assert.deepEqual(await page.locator("#recents-list li").allTextContents(), [
-      "AMS — Amsterdam, Netherlands",
+      "AMS — Amsterdam, Netherlands" + "amsterdam-nl", // shield icon <title>
     ]);
   });
 });
